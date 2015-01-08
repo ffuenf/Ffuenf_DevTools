@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Ffuenf_DevTools>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Ffuenf_DevTools>
+  </modules>
+</config>
