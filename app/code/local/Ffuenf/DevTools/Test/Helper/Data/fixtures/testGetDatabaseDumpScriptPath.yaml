@@ -1,0 +1,2 @@
+config:
+  default/ffuenf_devtools/backup/dump_database_script_path: "../../shared/dump_database.sh"

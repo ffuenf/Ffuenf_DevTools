@@ -1,26 +1,43 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_DevTools extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   Ffuenf
+ * @package    Ffuenf_DevTools
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
 <config>
-  <acl>
-    <resources>
-      <admin>
-        <children>
-          <system>
-            <children>
-              <ffuenf_devtools translate="title" module="ffuenf_devtools">
-                <title>DevTools</title>
-                <config>
-                  <children>
-                    <general translate="title">
-                      <title>Ffuenf DevTools General Configuration</title>
-                      <sort_order>100</sort_order>
-                    </general>
-                  </children>
-                </config>
-              </ffuenf_devtools>
-            </children>
-          </system>
-        </children>
-      </admin>
-    </resources>
-  </acl>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ffuenf_devtools translate="title" module="ffuenf_devtools">
+                                        <title>Ffuenf DevTools Module</title>
+                                    </ffuenf_devtools>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
 </config>

@@ -1,61 +1,82 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_DevTools extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   Ffuenf
+ * @package    Ffuenf_DevTools
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
 <config>
-  <modules>
-    <Ffuenf_DevTools>
-      <version>1.0.0</version>
-    </Ffuenf_DevTools>
-  </modules>
-  <global>
-    <blocks>
-      <ffuenf_devtools>
-        <class>Ffuenf_DevTools_Block</class>
-      </ffuenf_devtools>
-    </blocks>
-    <helpers>
-      <ffuenf_devtools>
-        <class>Ffuenf_DevTools_Helper</class>
-      </ffuenf_devtools>
-    </helpers>
-  </global>
-  <admin>
-    <routers>
-      <ffuenf_devtools>
-        <use>admin</use>
-        <args>
-          <module>Ffuenf_DevTools</module>
-          <frontName>devtools</frontName>
-        </args>
-      </ffuenf_devtools>
-    </routers>
-  </admin>
-  <adminhtml>
-    <menu>
-      <system>
-        <children>
-          <ffuenf_devtools module="ffuenf_devtools">
-            <title>DevTools</title>
-            <sort_order>0</sort_order>
-            <action>devtools/backup</action>
-          </ffuenf_devtools>
-        </children>
-      </system>
-    </menu>
-  </adminhtml>
-  <default>
-    <ffuenf_devtools>
-      <general>
-        <enable>0</enable>
-      </general>
-      <n98magerun>
-        <path>../tools/n98-magerun.phar</path>
-      </n98magerun>
-    </ffuenf_devtools>
-  </default>
-  <phpunit>
-    <suite>
-      <modules>
-        <Ffuenf_DevTools/>
-      </modules>
-    </suite>
-  </phpunit>
+    <modules>
+        <Ffuenf_DevTools>
+            <version>1.0.0</version>
+        </Ffuenf_DevTools>
+    </modules>
+    <global>
+        <blocks>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Block</class>
+            </ffuenf_devtools>
+        </blocks>
+        <helpers>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Helper</class>
+            </ffuenf_devtools>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <ffuenf_devtools>
+                <use>admin</use>
+                <args>
+                    <module>Ffuenf_DevTools</module>
+                    <frontName>devtools</frontName>
+                </args>
+            </ffuenf_devtools>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <system>
+                <children>
+                    <ffuenf_devtools module="ffuenf_devtools">
+                        <title>DevTools</title>
+                        <sort_order>0</sort_order>
+                        <action>devtools/backup</action>
+                    </ffuenf_devtools>
+                </children>
+            </system>
+        </menu>
+    </adminhtml>
+    <default>
+        <ffuenf_devtools>
+            <general>
+                <enable>0</enable>
+            </general>
+            <backup>
+                <dump_database_script_path></dump_database_script_path>
+            </backup>
+            <n98magerun>
+                <path>../tools/n98-magerun.phar</path>
+            </n98magerun>
+        </ffuenf_devtools>
+    </default>
+    <phpunit>
+        <suite>
+            <modules>
+                <Ffuenf_DevTools/>
+            </modules>
+        </suite>
+    </phpunit>
 </config>

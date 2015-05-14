@@ -1,114 +1,149 @@
 <?php
 /**
-* Magento
-*
-* NOTICE OF LICENSE
-*
-* This source file is subject to the Open Software License (OSL 3.0)
-* that is bundled with this package in the file LICENSE.txt.
-* It is also available through the world-wide-web at this URL:
-* http://opensource.org/licenses/osl-3.0.php
-* If you did not receive a copy of the license and are unable to
-* obtain it through the world-wide-web, please send an email
-* to license@magentocommerce.com so we can send you a copy immediately.
-*
-* DISCLAIMER
-*
-* Do not edit or add to this file if you wish to upgrade Magento to newer
-* versions in the future. If you wish to customize Magento for your
-* needs please refer to http://www.magentocommerce.com for more information.
-*
-* @category    Ffuenf
-* @package     Ffuenf_DevTools
-* @author      Achim Rosenhagen <a.rosenhagen@ffuenf.de>
-* @copyright   Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
-* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
-*/
+ * Ffuenf_DevTools extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   Ffuenf
+ * @package    Ffuenf_DevTools
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+ */
 
-class Ffuenf_DevTools_Helper_Data extends Mage_Core_Helper_Abstract
+class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
 {
-  /**
-  * Path for the config for extension active status
-  */
-  const CONFIG_EXTENSION_ACTIVE = 'ffuenf_devtools/general/enable';
 
-  /**
-  * Variable for if the extension is active
-  *
-  * @var bool
-  */
-  protected $bExtensionActive;
+    /**
+     * Path for ffuenf_devtools/general/enable
+     */
+    const CONFIG_EXTENSION_ACTIVE = 'ffuenf_devtools/general/enable';
 
-  /**
-  * Check to see if the extension is active
-  *
-  * @return bool
-  */
-  public function isExtensionActive()
-  {
-    if ($this->bExtensionActive === null) {
-      $this->bExtensionActive = Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_ACTIVE);
+    /**
+     * Path for ffuenf_devtools/n98magerun/path
+     */
+    const CONFIG_EXTENSION_N98MAGERUNPATH = 'ffuenf_devtools/n98magerun/path';
+
+    /**
+     * Path for ffuenf_devtools/backup/dump_database_script_path
+     */
+    const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH = 'ffuenf_devtools/backup/dump_database_script_path';
+
+    /**
+     * Variable for if the extension is active
+     *
+     * @var bool
+     */
+    protected $bExtensionActive;
+
+    /**
+     * Variable for the n98-magerun system path
+     *
+     * @var string
+     */
+    protected $sN98MagerunPath;
+
+    /**
+     * Variable for the path to the dump_database shell script
+     *
+     * @var string
+     */
+    protected $sDumpDatabaseScriptPath;
+
+    /**
+     * Check to see if the extension is active
+     *
+     * @return bool
+     */
+    public function isExtensionActive()
+    {
+        return $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, 'bExtensionActive');
     }
-    return $this->bExtensionActive;
-  }
 
-  /**
-  * Variable for if n98-magerun is available
-  *
-  * @var bool
-  */
-  protected $bN98MagerunAvailable;
+    /**
+     * Variable for if n98-magerun is available
+     *
+     * @var bool
+     */
+    protected $bN98MagerunAvailable;
 
-  /**
-  * Checks if n98-magerun is available
-  */
-  public function isN98MagerunAvailable()
-  {
-    $output = $this->runN98Magerun(array('--version'));
-    if (!isset($output[0]) || strpos($output[0], 'n98-magerun version') === false) {
-      $this->bN98MagerunAvailable = true;
-    } else {
-      $this->bN98MagerunAvailable = false;
+    /**
+     * Checks if n98-magerun is available
+     *
+     * @return bool
+     */
+    public function isN98MagerunAvailable()
+    {
+        $output = $this->runN98Magerun(array('--version'));
+        if (!isset($output[0]) || strpos($output[0], 'n98-magerun version') === false) {
+            $this->bN98MagerunAvailable = true;
+        } else {
+            $this->bN98MagerunAvailable = false;
+        }
+        return $this->bN98MagerunAvailable;
     }
-    return $this->bN98MagerunAvailable;
-  }
 
-  /**
-  * Checks if n98-magerun is present and returns the version number
-  */
-  public function checkN98Magerun()
-  {
-    $output = $this->runN98Magerun(array('--version'));
-    if (!$this->getN98MagerunPath()) {
-      Mage::throwException('No valid n98-magerun found');
+    /**
+     * Checks if n98-magerun is present and returns the version number
+     *
+     * @return string
+     * @throws Mage_Core_Exception
+     */
+    public function checkN98Magerun()
+    {
+        $output = $this->runN98Magerun(array('--version'));
+        if (!$this->getN98MagerunPath()) {
+            Mage::throwException('No valid n98-magerun found');
+        }
+        $matches = array();
+        preg_match('/(\d+\.\d+\.\d)/', $output[0], $matches);
+        return $matches[1];
     }
-    $matches = array();
-    preg_match('/(\d+\.\d+\.\d)/', $output[0], $matches);
-    return $matches[1];
-  }
 
-  /**
-  * Get n98-magerun path
-  *
-  * @return string
-  * @throws Mage_Core_Exception
-  */
-  public function getN98MagerunPath() {
-    $pathN98 = Mage::getStoreConfig('ffuenf_devtools/n98magerun/path');
-    $baseDir = Mage::getBaseDir();
-    $path = $baseDir . DS . $pathN98;
-    if (!is_file($path)) {
-      Mage::throwException('Could not find n98-magerun at ' . $path);
+    /**
+     * Get n98-magerun path
+     *
+     * @return string
+     * @throws Mage_Core_Exception
+     */
+    public function getN98MagerunPath()
+    {
+        $baseDir = Mage::getBaseDir();
+        $path = $baseDir . DS . $this->getStoreConfig(self::CONFIG_EXTENSION_N98MAGERUNPATH, 'sN98MagerunPath');
+        if (!is_file($path)) {
+            Mage::throwException('Could not find n98-magerun at ' . $path);
+        }
+        return $path;
     }
-    return $path;
-  }
 
-  public function runN98Magerun($options=array()) {
-    array_unshift($options, '--root-dir='.Mage::getBaseDir());
-    array_unshift($options, '--no-interaction');
-    array_unshift($options, '--no-ansi');
-    $output = array();
-    exec('php -d ' . $this->getN98MagerunPath() . ' ' . implode(' ', $options), $output);
-    return $output;
-  }
+    /**
+     * Run n98-magerun command
+     *
+     * @param string[]
+     */
+    public function runN98Magerun($options = array())
+    {
+        array_unshift($options, '--root-dir='.Mage::getBaseDir());
+        array_unshift($options, '--no-interaction');
+        array_unshift($options, '--no-ansi');
+        $output = array();
+        exec('php -d ' . $this->getN98MagerunPath() . ' ' . implode(' ', $options), $output);
+        return $output;
+    }
+
+    /**
+     * Get database_dump script path
+     *
+     * @return string
+     * @throws Mage_Core_Exception
+     */
+    public function getDatabaseDumpScriptPath()
+    {
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH, 'sDumpDatabaseScriptPath');
+    }
 }
