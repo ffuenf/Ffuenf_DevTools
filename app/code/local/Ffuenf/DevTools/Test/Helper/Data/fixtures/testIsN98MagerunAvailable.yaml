@@ -1,2 +1,2 @@
 config:
-  default/ffuenf_devtools/n98magerun/path: "../n98-magerun/n98-magerun.phar"
+  default/ffuenf_devtools/n98magerun/path: "../tools/n98-magerun"
