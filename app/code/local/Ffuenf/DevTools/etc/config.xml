@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_DevTools>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </Ffuenf_DevTools>
     </modules>
     <global>

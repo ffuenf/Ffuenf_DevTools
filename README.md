@@ -2,13 +2,15 @@ Ffuenf_DevTools
 ===============
 [![GitHub tag](https://img.shields.io/github/tag/ffuenf/Ffuenf_DevTools.svg)][tag]
 [![Build Status](https://img.shields.io/travis/ffuenf/Ffuenf_DevTools.svg)][travis]
+[![Code Quality](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools/badges/quality-score.png)][code_quality]
+[![Code Coverage](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools/badges/coverage.png)][code_coverage]
 [![Code Climate](https://codeclimate.com/github/ffuenf/Ffuenf_DevTools/badges/gpa.svg)][codeclimate_gpa]
-[![Test Coverage](https://codeclimate.com/github/ffuenf/Ffuenf_DevTools/badges/coverage.svg)][codeclimate_coverage]
 
 [tag]: https://github.com/ffuenf/Ffuenf_DevTools
 [travis]: https://travis-ci.org/ffuenf/Ffuenf_DevTools
+[code_quality]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools
+[code_coverage]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools
 [codeclimate_gpa]: https://codeclimate.com/github/ffuenf/Ffuenf_DevTools
-[codeclimate_coverage]: https://codeclimate.com/github/ffuenf/Ffuenf_DevTools
 
 This is a extension for Magento Community Edition that adds access to commonly used development tasks in the backend.
 
@@ -17,17 +19,9 @@ Platform
 
 The following versions are supported and tested:
 
-* Magento Community Edition 1.5.0.1
-* Magento Community Edition 1.6.0.0
-* Magento Community Edition 1.6.1.0
 * Magento Community Edition 1.6.2.0
-* Magento Community Edition 1.7.0.0
-* Magento Community Edition 1.7.0.1
 * Magento Community Edition 1.7.0.2
-* Magento Community Edition 1.8.0.0
 * Magento Community Edition 1.8.1.0
-* Magento Community Edition 1.9.0.0
-* Magento Community Edition 1.9.0.1
 * Magento Community Edition 1.9.1.1
 
 Other versions are assumed to work.
