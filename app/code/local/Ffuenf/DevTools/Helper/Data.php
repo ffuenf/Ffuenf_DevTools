@@ -68,9 +68,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     protected $sHeaderbarTag;
 
-    private $_domain = null;
-    private $_className = null;
-
     /**
      * Check to see if the extension is active
      *
@@ -166,7 +163,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     /**
      * @param string $localeCode
      * @param string $fileName
-     * @param string|integer|Mage_Core_Model_Store $store (optional)
+     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
      *
      * @return string|null
      */
@@ -183,7 +180,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * @param string|integer|Mage_Core_Model_Store $store (optional)
+     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
      *
      * @return array
      */
@@ -211,7 +208,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * @param string|integer|Mage_Core_Model_Store $store (optional)
+     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
      *
      * @return array
      */
@@ -254,6 +251,9 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         );
     }
 
+    /**
+     * @return string
+     */
     public function getPatches()
     {
         return Mage::getModel('ffuenf_devtools/patches')->getPatches();
@@ -275,13 +275,14 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     public function getBranch()
     {
-        $branch = '';
         exec('git branch', $lines);
-        foreach ($lines as $line) {
-            if (strpos($line, '*') === 0) {
-                $branch = ltrim($line, '* ');
-                $this->sHeaderbarBranch = $branch;
-                break;
+        if (is_array($lines)) {
+            foreach ($lines as $line) {
+                if (strpos($line, '*') === 0) {
+                    $branch = ltrim($line, '* ');
+                    $this->sHeaderbarBranch = $branch;
+                    break;
+                }
             }
         }
         return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_BRANCH, 'sHeaderbarBranch');
@@ -293,7 +294,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     public function getCommit($flavour = 'short')
     {
-        $hash = '';
         switch ($flavour) {
             case 'full':
                 exec('git log -1', $line);

@@ -42,7 +42,7 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
         $ioAdapter->streamOpen($this->patchFile, 'r');
         while ($buffer = $ioAdapter->streamRead()) {
             if (stristr($buffer, '|')) {
-                list($date, $patch) = array_map('trim', explode('|', $buffer));
+                list($date,,$patch) = array_map('trim', explode('|', $buffer));
                 $this->appliedPatches[] = $patch;
             }
         }
