@@ -144,7 +144,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     public function runMagerun($options = array())
     {
-        array_unshift($options, '--root-dir='.Mage::getBaseDir());
+        array_unshift($options, '--root-dir=' . Mage::getBaseDir());
         array_unshift($options, '--no-interaction');
         array_unshift($options, '--no-ansi');
         $output = array();
@@ -174,7 +174,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     {
         $paths = $this->getLocalePaths($store);
         foreach ($paths as $path) {
-            $filePath = $path.DS.$localeCode.DS.$fileName;
+            $filePath = $path . DS . $localeCode . DS . $fileName;
             if (!empty($filePath) && file_exists($filePath)) {
                 return $filePath;
             }
@@ -191,7 +191,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     {
         $paths = array();
         $design = $this->getDesign($store);
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.$design['theme'].DS.'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . $design['theme'] . DS . 'locale';
         // Check for fallback support
         $fallbackModel = Mage::getModel('core/design_fallback');
         if (!empty($fallbackModel)) {
@@ -199,13 +199,13 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             if (!empty($fallbackSchemes)) {
                 foreach ($fallbackSchemes as $scheme) {
                     if (!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
-                    $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
+                    $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $scheme['_package'] . DS . $scheme['_theme'] . DS . 'locale';
                 }
             }
         }
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.'default'.DS.'locale';
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'default'.DS.'default'.DS.'locale';
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'base'.DS.'default'.DS.'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . 'default' . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'default' . DS . 'default' . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'base' . DS . 'default' . DS . 'locale';
         $paths[] = Mage::getBaseDir('locale');
         return $paths;
     }
@@ -226,7 +226,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             $package = Mage::getSingleton('core/design_package');
             $originalArea = $package->getArea();
             $originalStore = $package->getStore();
-            if(!empty($store)) $package->setStore($store);
+            if (!empty($store)) $package->setStore($store);
             $package->setArea('frontend');
             $packageName = $package->getPackageName();
             $theme = $package->getTheme('default');
@@ -242,8 +242,12 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         if (empty($theme) || in_array($theme, array('default'))) {
             $theme = Mage::getStoreConfig('design/theme/locale', $store);
         }
-        if (empty($packageName)) $packageName = 'default';
-        if (empty($theme)) $theme = 'default';
+        if (empty($packageName)) {
+            $packageName = 'default';
+        }
+        if (empty($theme)) {
+            $theme = 'default';
+        }
         return array(
             'package' => $packageName,
             'theme' => $theme,
@@ -293,7 +297,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         switch ($flavour) {
             case 'full':
                 exec('git log -1', $line);
-                $hash = str_replace('commit ','',$line[0]);
+                $hash = str_replace('commit ', '', $line[0]);
                 break;
             default:
                 exec('git describe --always', $line);
