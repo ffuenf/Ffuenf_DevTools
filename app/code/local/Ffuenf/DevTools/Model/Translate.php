@@ -124,7 +124,10 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         $fallbacks = $fallbackModel->getFallbackScheme($designPackage->getArea(), $designPackage->getPackageName(), $designPackage->getTheme('layout'));
         foreach ($fallbacks as $fallback)
         {
-            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) continue; // first one is empty for some reason
+            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) {
+                continue;
+            }
+            // first one is empty for some reason
             $fallbackFile = $designPackage->getLocaleFileName('translate.csv', array('_package' => $fallback['_package']));
             $this->_addData($this->_getFileData($fallbackFile), false, $forceReload);
         }
