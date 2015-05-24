@@ -195,7 +195,9 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             $fallbackSchemes = $fallbackModel->getFallbackScheme('frontend', $design['package'], $design['theme']);
             if (!empty($fallbackSchemes)) {
                 foreach ($fallbackSchemes as $scheme) {
-                    if (!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
+                    if (!isset($scheme['_package']) || !isset($scheme['_theme'])) {
+                        continue;
+                    }
                     $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $scheme['_package'] . DS . $scheme['_theme'] . DS . 'locale';
                 }
             }
@@ -223,7 +225,9 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             $package = Mage::getSingleton('core/design_package');
             $originalArea = $package->getArea();
             $originalStore = $package->getStore();
-            if (!empty($store)) $package->setStore($store);
+            if (!empty($store)) {
+                $package->setStore($store);
+            }
             $package->setArea('frontend');
             $packageName = $package->getPackageName();
             $theme = $package->getTheme('default');
