@@ -40,17 +40,17 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     }
 
     /**
-     * Tests whether n98-magerun is available
+     * Tests whether magerun is available
      *
      * @test
      * @loadFixture
-     * @covers Ffuenf_DevTools_Helper_Data::isN98MagerunAvailable
+     * @covers Ffuenf_DevTools_Helper_Data::isMagerunAvailable
      */
-    public function testIsN98MagerunAvailable()
+    public function testIsMagerunAvailable()
     {
         $this->assertTrue(
-            Mage::helper('ffuenf_devtools')->isN98MagerunAvailable(),
-            'No valid n98-magerun found'
+            Mage::helper('ffuenf_devtools')->isMagerunAvailable(),
+            'No valid magerun found'
         );
     }
 

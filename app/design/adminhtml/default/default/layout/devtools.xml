@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0"?>
+<!--
 /**
  * Ffuenf_DevTools extension
  * 
@@ -14,17 +15,18 @@
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
- */
-
-class Ffuenf_DevTools_Block_Backup extends Mage_Adminhtml_Block_Widget_Grid_Container
-{
-
-    public function __construct()
-    {
-        $this->_controller = 'backup';
-        $this->_blockGroup = 'devtools';
-        $this->_headerText = Mage::helper('catalog')->__('Backup');
-        parent::__construct();
-        $this->_removeButton('add');
-    }
-}
+*/
+-->
+<layout>
+    <default>
+        <reference name="before_body_end">
+            <block type="core/template" template="devtools/appliedpatches.phtml" name="ffuenf.applied.patches"/>
+            <block after="-" type="ffuenf_devtools/adminhtml_headerbar" name="ffuenf.headerbar"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <name>headerbar.css</name>
+            </action>
+        </reference>
+    </default>
+</layout>

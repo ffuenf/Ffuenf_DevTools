@@ -1,12 +1,15 @@
 language: php
 sudo: false
 php:
+- 5.3
 - 5.4
 - 5.5
 - 5.6
 - hhvm
 matrix:
   allow_failures:
+  - php: 5.3
+  - php: 5.6
   - php: hhvm
 env:
   matrix:
@@ -15,10 +18,9 @@ env:
   - MAGENTO_VERSION=magento-ce-1.7.0.2
   - MAGENTO_VERSION=magento-ce-1.6.2.0
   global:
-  - secure: RsXdjcvJXbnXH3O53h/8rVx6kdOZydY+f/2mI4HdAR9Yu9VL15VMcRClQnaHayJa1hzsWgAX32AFYxNl0iRz8NPWAGki2OkGmsRhhg8fyH1HD3KPITyRyoTb//yogNCi77/SHbFJzWFi/V7RXqqXTInTvwWU/UBmhjiE3if3LNk=
-  - secure: QI8aBN/skgM6ZBimeXWCV4VtffTezNKXIvz+dJYZufttexUUs7TwkvWYQrfVa5a59z2DBAS9oJvUI5NxJ/htSaT44TDjI1peDoCsI52Sk7Ze9tQBaRC4ToiDPaAiTNLJ88k3ojX/qVQNLyr/Z6bsI9wTD43s14Phelxgx5KIfW4=
+    secure: Bb+kvyzJJCM1GIJGpxwyh1WlGjroJTmGWUrIibpanPCasj0c42M4srHflprHjaBxePu2jYKb15M/V3pzeKMdyzRHirbByKVWEHGq+9JXw0S894YXNbLITEFhfELt8flfziKzdYmRlmpXzfvxiUzPNdoc3TjlgF0gY4Ai/XAgxcE=
 script:
 - curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh | bash
 notifications:
   slack:
-    secure: feL+V6PTceG21/bvX6aYJdnMreNjuvezqWs/Dk2a/dPAWBCqgCPrnghEvEENuSVKaSOPKPnZWOEUlhQykjLvCKJo+2eGV45cF2cWOiHJDN2CUstjczaVsIn6HqZEI9Eog8EmhGGKpAU9PhOnGVLk6YmQYWvIE3x90V2T2BDCQ+A=
+    secure: bnbXkNU/ikoUfeOql5IYGhHd0qbsJgT73lgxzh2WmZSBS8X+HMIGATRd/tc+BpUajcev2/dPTTx3Z+zuV7/WOC+VygJ9RvUqyLGqD6cunsP3werM0kVN9HqoxolqK+sUHemSNrNgsxejnr4PNzGBIq+gAr+PPoELpuLbrVcVGnA=

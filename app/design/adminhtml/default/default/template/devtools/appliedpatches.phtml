@@ -1,0 +1,10 @@
+<script>
+document.observe('dom:loaded',function(){
+    var patchesText = $('ffuenf-applied-patches').text;
+    var footer = $$('.footer')[0];
+    footer.insert({bottom: patchesText});
+});
+</script>
+<script type="text/template" id="ffuenf-applied-patches">
+    <?php echo $this->helper('ffuenf_devtools')->getPatches();?>
+</script>

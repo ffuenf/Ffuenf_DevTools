@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_DevTools>
-            <version>1.0.1</version>
+            <version>2.0.0</version>
         </Ffuenf_DevTools>
     </modules>
     <global>
@@ -29,6 +29,29 @@
                 <class>Ffuenf_DevTools_Block</class>
             </ffuenf_devtools>
         </blocks>
+        <models>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Model</class>
+            </ffuenf_devtools>
+            <core>
+                <rewrite>
+                    <translate>Ffuenf_DevTools_Model_Translate</translate>
+                </rewrite>
+                <rewrite>
+                    <email_template>Ffuenf_DevTools_Model_Email_Template</email_template>
+                </rewrite>
+            </core>
+        </models>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <ffuenf_devtools_observer>
+                        <class>ffuenf_devtools/observer</class>
+                        <method>overrideTheme</method>
+                    </ffuenf_devtools_observer>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
         <helpers>
             <ffuenf_devtools>
                 <class>Ffuenf_DevTools_Helper</class>
@@ -47,6 +70,16 @@
         </routers>
     </admin>
     <adminhtml>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <ffuenf_devtools_headerbar>
+                        <class>ffuenf_devtools/observer</class>
+                        <method>setBodyClass</method>
+                    </ffuenf_devtools_headerbar>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
         <menu>
             <system>
                 <children>
@@ -58,6 +91,13 @@
                 </children>
             </system>
         </menu>
+        <layout>
+            <updates>
+                <ffuenf_devtools>
+                    <file>devtools.xml</file>
+                </ffuenf_devtools>
+            </updates>
+        </layout>
     </adminhtml>
     <default>
         <ffuenf_devtools>
@@ -67,9 +107,17 @@
             <backup>
                 <dump_database_script_path></dump_database_script_path>
             </backup>
-            <n98magerun>
+            <magerun>
                 <path>../tools/n98-magerun.phar</path>
-            </n98magerun>
+            </magerun>
+            <headerbar>
+                <production_path></production_path>
+                <staging_path></staging_path>
+                <development_path></development_path>
+                <branch></branch>
+                <commit></commit>
+                <tag></tag>
+            </headerbar>
         </ffuenf_devtools>
     </default>
     <phpunit>

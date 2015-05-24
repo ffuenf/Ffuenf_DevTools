@@ -21,7 +21,8 @@ class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
 
     protected function _initAction()
     {
-        $this->loadLayout()->_setActiveMenu('devtools/backup')->_addBreadcrumb(Mage::helper('adminhtml')->__('Backup Manager'), Mage::helper('adminhtml')->__('Backup Manager'));
+        $helper = Mage::helper('ffuenf_devtools');
+        $this->loadLayout()->_setActiveMenu('devtools/backup')->_addBreadcrumb($helper->__('Backup Manager'), $helper->__('Backup Manager'));
         return $this;
     }
 
@@ -37,14 +38,14 @@ class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
      */
     public function backupAction()
     {
-        $path = Mage::helper('ffuenf_devtools')->getDatabaseDumpScriptPath();
+        $helper = Mage::helper('ffuenf_devtools');
+        $path = $helper->getDatabaseDumpScriptPath();
         if (file_exists($path)) {
-            exec($path);  
-            Mage::getSingleton('core/session')->addSuccess('Backup successfully created');
+            exec($path);
+            Mage::getSingleton('core/session')->addSuccess($helper->__('Backup successfully created'));
         } else {
-            Mage::getSingleton('core/session')->addError('Could not open backup script.');
+            Mage::getSingleton('core/session')->addError($helper->__('Could not open backup script.'));
         }
         $this->_redirect('devtools/backup/index');
     }
 }
-
