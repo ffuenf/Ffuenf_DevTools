@@ -137,7 +137,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     /**
      * Run magerun command
      *
-     * @param string[]
+     * @param array<string>
      */
     public function runMagerun($options = array())
     {
@@ -164,7 +164,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      * @param string $localeCode
      * @param string $fileName
      * @param string|integer|Mage_Core_Model_Store|null $store (optional)
-     *
      * @return string|null
      */
     public function getLocaleOverrideFile($localeCode, $fileName, $store = null)
@@ -181,7 +180,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
 
     /**
      * @param string|integer|Mage_Core_Model_Store|null $store (optional)
-     *
      * @return array
      */
     public function getLocalePaths($store = null)
@@ -211,7 +209,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
 
     /**
      * @param string|integer|Mage_Core_Model_Store|null $store (optional)
-     *
      * @return array
      */
     public function getDesign($store = null)
@@ -293,7 +290,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * @param string $flavour
+     * @param string $flavour (optional)
      * @return string
      */
     public function getCommit($flavour = 'short')

@@ -19,7 +19,6 @@
 class Ffuenf_DevTools_Block_Adminhtml_Headerbar extends Mage_Core_Block_Template
 {
     /**
-     *
      * @return string
      */
     protected function _toHtml()

@@ -18,8 +18,8 @@
 
 class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
 {
-    public $appliedPatches = array();
     private $_patchFile;
+    public $appliedPatches = array();
 
     protected function _construct()
     {
@@ -27,11 +27,11 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
         $this->_loadPatchFile();
     }
 
-    public function getPatches()
-    {
-        return implode(', ', $this->appliedPatches);
-    }
-
+    /**
+     * load patch file
+     *
+     * @return void
+     */
     protected function _loadPatchFile()
     {
         $ioAdapter = new Varien_Io_File();
@@ -47,5 +47,15 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
             }
         }
         $ioAdapter->streamClose();
+    }
+
+    /**
+     * Get applied patches
+     *
+     * @return string
+     */
+    public function getPatches()
+    {
+        return implode(', ', $this->appliedPatches);
     }
 }

@@ -45,29 +45,6 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
     }
 
     /**
-     * Retrieve translated template file
-     * Try current design package first
-     *
-     * @param string $file
-     * @param string $type
-     * @param string|null $localeCode
-     * @return string
-     */
-    public function getTemplateFile($file, $type, $localeCode = null)
-    {
-        if (is_null($localeCode) || preg_match('/[^a-zA-Z_]/', $localeCode)) {
-            $localeCode = $this->getLocale();
-        }
-        $filePath = $this->getLocaleOverrideFile($localeCode, 'template' . DS . $type . DS . $file);
-        if (empty($filePath) || !file_exists($filePath)) {
-            return parent::getTemplateFile($file, $type, $localeCode);
-        }
-        $ioAdapter = new Varien_Io_File();
-        $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
-        return (string)$ioAdapter->read($filePath);
-    }
-
-    /**
      * Custom function to return override folder for locales
      *
      * @param string $localeCode
@@ -134,5 +111,28 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         $file = Mage::getDesign()->getLocaleFileName('translate.csv');
         $this->_addData($this->_getFileData($file), false, $forceReload);
         return $this;
+    }
+
+    /**
+     * Retrieve translated template file
+     * Try current design package first
+     *
+     * @param string $file
+     * @param string $type
+     * @param string|null $localeCode
+     * @return string
+     */
+    public function getTemplateFile($file, $type, $localeCode = null)
+    {
+        if (is_null($localeCode) || preg_match('/[^a-zA-Z_]/', $localeCode)) {
+            $localeCode = $this->getLocale();
+        }
+        $filePath = $this->getLocaleOverrideFile($localeCode, 'template' . DS . $type . DS . $file);
+        if (empty($filePath) || !file_exists($filePath)) {
+            return parent::getTemplateFile($file, $type, $localeCode);
+        }
+        $ioAdapter = new Varien_Io_File();
+        $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
+        return (string)$ioAdapter->read($filePath);
     }
 }
