@@ -13,6 +13,8 @@ tools:
             standard: 'Zend'
 checks:
     php:
+        coding_standard:
+            name: Magento
         align_assignments: false
         argument_type_checks: true
         assignment_of_null_return: true
