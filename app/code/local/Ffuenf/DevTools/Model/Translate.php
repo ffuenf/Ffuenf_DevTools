@@ -122,8 +122,7 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         // First add fallback package translate.csv files
         $designPackage = Mage::getSingleton('core/design_package');
         $fallbacks = $fallbackModel->getFallbackScheme($designPackage->getArea(), $designPackage->getPackageName(), $designPackage->getTheme('layout'));
-        foreach ($fallbacks as $fallback)
-        {
+        foreach ($fallbacks as $fallback) {
             if (!isset($fallback['_package']) || !isset($fallback['_theme'])) {
                 continue;
             }

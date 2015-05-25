@@ -31,42 +31,49 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      *
      * @var bool
      */
-    protected $bExtensionActive;
+    protected $_bExtensionActive;
+
+    /**
+     * Variable for if magerun is available
+     *
+     * @var bool
+     */
+    protected $_bMagerunAvailable;
 
     /**
      * Variable for the magerun system path
      *
      * @var string
      */
-    protected $sMagerunPath;
+    protected $_sMagerunPath;
 
     /**
      * Variable for the path to the dump_database shell script
      *
      * @var string
      */
-    protected $sDumpDatabaseScriptPath;
+    protected $_sDumpDatabaseScriptPath;
 
     /**
      * Variable for the current git branch
      *
      * @var string
      */
-    protected $sHeaderbarBranch;
+    protected $_sHeaderbarBranch;
 
     /**
      * Variable for the current git commit
      *
      * @var string
      */
-    protected $sHeaderbarCommit;
+    protected $_sHeaderbarCommit;
 
     /**
      * Variable for the current git tag
      *
      * @var string
      */
-    protected $sHeaderbarTag;
+    protected $_sHeaderbarTag;
 
     /**
      * Check to see if the extension is active
@@ -75,15 +82,8 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     public function isExtensionActive()
     {
-        return $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, 'bExtensionActive');
+        return $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, '_bExtensionActive');
     }
-
-    /**
-     * Variable for if magerun is available
-     *
-     * @var bool
-     */
-    protected $bMagerunAvailable;
 
     /**
      * Checks if magerun is available
@@ -94,11 +94,11 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     {
         $output = $this->runMagerun(array('--version'));
         if (!isset($output[0]) || strpos($output[0], 'n98-magerun version') === false) {
-            $this->bMagerunAvailable = true;
+            $this->_bMagerunAvailable = true;
         } else {
-            $this->bMagerunAvailable = false;
+            $this->_bMagerunAvailable = false;
         }
-        return $this->bMagerunAvailable;
+        return $this->_bMagerunAvailable;
     }
 
     /**
@@ -127,7 +127,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     public function getMagerunPath()
     {
         $baseDir = Mage::getBaseDir();
-        $path = $baseDir . DS . $this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, 'sMagerunPath');
+        $path = $baseDir . DS . $this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, '_sMagerunPath');
         if (!is_file($path)) {
             Mage::throwException('Could not find magerun at ' . $path);
         }
@@ -157,7 +157,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      */
     public function getDatabaseDumpScriptPath()
     {
-        return $this->getStoreConfig(self::CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH, 'sDumpDatabaseScriptPath');
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH, '_sDumpDatabaseScriptPath');
     }
 
     /**
@@ -270,8 +270,8 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     {
         $tag = '';
         exec('git describe --abbrev=0 --tags', $tag);
-        $this->sHeaderbarTag = array_shift($tag);
-        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_TAG, 'sHeaderbarTag');
+        $this->_sHeaderbarTag = array_shift($tag);
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_TAG, '_sHeaderbarTag');
     }
 
     /**
@@ -284,12 +284,12 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             foreach ($lines as $line) {
                 if (strpos($line, '*') === 0) {
                     $branch = ltrim($line, '* ');
-                    $this->sHeaderbarBranch = $branch;
+                    $this->_sHeaderbarBranch = $branch;
                     break;
                 }
             }
         }
-        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_BRANCH, 'sHeaderbarBranch');
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_BRANCH, '_sHeaderbarBranch');
     }
 
     /**
@@ -308,8 +308,8 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
                 $hash = array_shift($line);
                 break;
         }
-        $this->sHeaderbarCommit = $hash;
-        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_COMMIT, 'sHeaderbarCommit');
+        $this->_sHeaderbarCommit = $hash;
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_COMMIT, '_sHeaderbarCommit');
     }
 
     /**
