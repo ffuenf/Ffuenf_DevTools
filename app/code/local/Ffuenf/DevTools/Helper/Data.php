@@ -1,82 +1,81 @@
 <?php
+
 /**
- * Ffuenf_DevTools extension
- * 
+ * Ffuenf_DevTools extension.
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the MIT License
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
- * 
+ *
  * @category   Ffuenf
- * @package    Ffuenf_DevTools
+ *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-
 class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
 {
-
-    const CONFIG_EXTENSION_ACTIVE                           = 'ffuenf_devtools/general/enable';
-    const CONFIG_EXTENSION_MAGERUNPATH                      = 'ffuenf_devtools/magerun/path';
-    const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH    = 'ffuenf_devtools/backup/dump_database_script_path';
-    const CONFIG_EXTENSION_HEADERBAR_BRANCH                 = 'ffuenf_devtools/headerbar/branch';
-    const CONFIG_EXTENSION_HEADERBAR_COMMIT                 = 'ffuenf_devtools/headerbar/commit';
-    const CONFIG_EXTENSION_HEADERBAR_TAG                    = 'ffuenf_devtools/headerbar/tag';
+    const CONFIG_EXTENSION_ACTIVE = 'ffuenf_devtools/general/enable';
+    const CONFIG_EXTENSION_MAGERUNPATH = 'ffuenf_devtools/magerun/path';
+    const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH = 'ffuenf_devtools/backup/dump_database_script_path';
+    const CONFIG_EXTENSION_HEADERBAR_BRANCH = 'ffuenf_devtools/headerbar/branch';
+    const CONFIG_EXTENSION_HEADERBAR_COMMIT = 'ffuenf_devtools/headerbar/commit';
+    const CONFIG_EXTENSION_HEADERBAR_TAG = 'ffuenf_devtools/headerbar/tag';
 
     /**
-     * Variable for if the extension is active
+     * Variable for if the extension is active.
      *
      * @var bool
      */
     protected $_bExtensionActive;
 
     /**
-     * Variable for if magerun is available
+     * Variable for if magerun is available.
      *
      * @var bool
      */
     protected $_bMagerunAvailable;
 
     /**
-     * Variable for the magerun system path
+     * Variable for the magerun system path.
      *
      * @var string
      */
     protected $_sMagerunPath;
 
     /**
-     * Variable for the path to the dump_database shell script
+     * Variable for the path to the dump_database shell script.
      *
      * @var string
      */
     protected $_sDumpDatabaseScriptPath;
 
     /**
-     * Variable for the current git branch
+     * Variable for the current git branch.
      *
      * @var string
      */
     protected $_sHeaderbarBranch;
 
     /**
-     * Variable for the current git commit
+     * Variable for the current git commit.
      *
      * @var string
      */
     protected $_sHeaderbarCommit;
 
     /**
-     * Variable for the current git tag
+     * Variable for the current git tag.
      *
      * @var string
      */
     protected $_sHeaderbarTag;
 
     /**
-     * Check to see if the extension is active
+     * Check to see if the extension is active.
      *
      * @return bool
      */
@@ -86,7 +85,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * Checks if magerun is available
+     * Checks if magerun is available.
      *
      * @return bool
      */
@@ -98,13 +97,15 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         } else {
             $this->_bMagerunAvailable = false;
         }
+
         return $this->_bMagerunAvailable;
     }
 
     /**
-     * Checks if magerun is present and returns the version number
+     * Checks if magerun is present and returns the version number.
      *
      * @return string
+     *
      * @throws Mage_Core_Exception
      */
     public function checkMagerun()
@@ -115,44 +116,49 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         }
         $matches = array();
         preg_match('/(\d+\.\d+\.\d)/', $output[0], $matches);
+
         return $matches[1];
     }
 
     /**
-     * Get magerun path
+     * Get magerun path.
      *
      * @return string
+     *
      * @throws Mage_Core_Exception
      */
     public function getMagerunPath()
     {
         $baseDir = Mage::getBaseDir();
-        $path = $baseDir . DS . $this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, '_sMagerunPath');
+        $path = $baseDir.DS.$this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, '_sMagerunPath');
         if (!is_file($path)) {
-            Mage::throwException('Could not find magerun at ' . $path);
+            Mage::throwException('Could not find magerun at '.$path);
         }
+
         return $path;
     }
 
     /**
-     * Run magerun command
+     * Run magerun command.
      *
      * @param array<string>
      */
     public function runMagerun($options = array())
     {
-        array_unshift($options, '--root-dir=' . Mage::getBaseDir());
+        array_unshift($options, '--root-dir='.Mage::getBaseDir());
         array_unshift($options, '--no-interaction');
         array_unshift($options, '--no-ansi');
         $output = array();
-        exec('php -d ' . $this->getMagerunPath() . ' ' . implode(' ', $options), $output);
+        exec('php -d '.$this->getMagerunPath().' '.implode(' ', $options), $output);
+
         return $output;
     }
 
     /**
-     * Get database_dump script path
+     * Get database_dump script path.
      *
      * @return string
+     *
      * @throws Mage_Core_Exception
      */
     public function getDatabaseDumpScriptPath()
@@ -161,32 +167,35 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * @param string $localeCode
-     * @param string $fileName
-     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
+     * @param string                                $localeCode
+     * @param string                                $fileName
+     * @param string|int|Mage_Core_Model_Store|null $store      (optional)
+     *
      * @return string|null
      */
     public function getLocaleOverrideFile($localeCode, $fileName, $store = null)
     {
         $paths = $this->getLocalePaths($store);
         foreach ($paths as $path) {
-            $filePath = $path . DS . $localeCode . DS . $fileName;
+            $filePath = $path.DS.$localeCode.DS.$fileName;
             if (!empty($filePath) && file_exists($filePath)) {
                 return $filePath;
             }
         }
-        return null;
+
+        return;
     }
 
     /**
-     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
+     * @param string|int|Mage_Core_Model_Store|null $store (optional)
+     *
      * @return array
      */
     public function getLocalePaths($store = null)
     {
         $paths = array();
         $design = $this->getDesign($store);
-        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . $design['theme'] . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.$design['theme'].DS.'locale';
         // Check for fallback support
         $fallbackModel = Mage::getModel('core/design_fallback');
         if (!empty($fallbackModel)) {
@@ -196,19 +205,21 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
                     if (!isset($scheme['_package']) || !isset($scheme['_theme'])) {
                         continue;
                     }
-                    $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $scheme['_package'] . DS . $scheme['_theme'] . DS . 'locale';
+                    $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
                 }
             }
         }
-        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . 'default' . DS . 'locale';
-        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'default' . DS . 'default' . DS . 'locale';
-        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'base' . DS . 'default' . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.'default'.DS.'locale';
+        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'default'.DS.'default'.DS.'locale';
+        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'base'.DS.'default'.DS.'locale';
         $paths[] = Mage::getBaseDir('locale');
+
         return $paths;
     }
 
     /**
-     * @param string|integer|Mage_Core_Model_Store|null $store (optional)
+     * @param string|int|Mage_Core_Model_Store|null $store (optional)
+     *
      * @return array
      */
     public function getDesign($store = null)
@@ -246,6 +257,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         if (empty($theme)) {
             $theme = 'default';
         }
+
         return array(
             'package' => $packageName,
             'theme' => $theme,
@@ -268,6 +280,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         $tag = '';
         exec('git describe --abbrev=0 --tags', $tag);
         $this->_sHeaderbarTag = array_shift($tag);
+
         return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_TAG, '_sHeaderbarTag');
     }
 
@@ -286,11 +299,13 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
                 }
             }
         }
+
         return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_BRANCH, '_sHeaderbarBranch');
     }
 
     /**
      * @param string $flavour (optional)
+     *
      * @return string
      */
     public function getCommit($flavour = 'short')
@@ -306,6 +321,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
                 break;
         }
         $this->_sHeaderbarCommit = $hash;
+
         return $this->getStoreConfig(self::CONFIG_EXTENSION_HEADERBAR_COMMIT, '_sHeaderbarCommit');
     }
 
@@ -325,11 +341,12 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
             'development',
         );
         foreach ($environments as $env) {
-            if ($domain === Mage::getStoreConfig('ffuenf_devtools/headerbar/' . $env . '_path')) {
+            if ($domain === Mage::getStoreConfig('ffuenf_devtools/headerbar/'.$env.'_path')) {
                 $this->_className = $env;
                 break;
             }
         }
+
         return $this->_className;
     }
 
@@ -343,6 +360,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         }
         $path = strtolower(rtrim(trim(Mage::getStoreConfig('web/unsecure/base_url')), '/'));
         $this->_domain = str_replace(array('http://', 'https://'), '', $path);
+
         return $this->_domain;
     }
 }

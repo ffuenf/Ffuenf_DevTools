@@ -1,31 +1,33 @@
 <?php
+
 /**
- * Ffuenf_DevTools extension
- * 
+ * Ffuenf_DevTools extension.
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the MIT License
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
- * 
+ *
  * @category   Ffuenf
- * @package    Ffuenf_DevTools
+ *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
- * EmailOverride Core model
+ * EmailOverride Core model.
  */
 class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
 {
     /**
-     * Retrieve translation file for module
+     * Retrieve translation file for module.
      *
      * @param string $module
      * @param string $fileName
+     *
      * @return string
      */
     protected function _getModuleFilePath($module, $fileName)
@@ -41,14 +43,16 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         if (!empty($filePath) && file_exists($filePath)) {
             return $filePath;
         }
+
         return parent::_getModuleFilePath($module, $fileName);
     }
 
     /**
-     * Custom function to return override folder for locales
+     * Custom function to return override folder for locales.
      *
      * @param string $localeCode
      * @param string $fileName
+     *
      * @return string
      */
     protected function getLocaleOverrideFile($localeCode, $fileName)
@@ -57,16 +61,17 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         if (!empty($this->_config['store'])) {
             $store = $this->_config['store'];
         }
-        /** @see Ffuenf_DevTools_Helper_Data::getLocalOverrideFile */
+        /* @see Ffuenf_DevTools_Helper_Data::getLocalOverrideFile */
         return Mage::helper('ffuenf_devtools')->getLocaleOverrideFile($localeCode, $fileName, $store);
     }
 
     /**
-     * Loading data from module translation files
+     * Loading data from module translation files.
      *
      * @param string $moduleName
-     * @param array $files
-     * @param bool $forceReload (optional)
+     * @param array  $files
+     * @param bool   $forceReload (optional)
+     *
      * @return Ffuenf_DevTools_Model_Translate
      */
     protected function _loadModuleTranslation($moduleName, $files, $forceReload = false)
@@ -80,13 +85,15 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
             }
             $this->_addData($this->_getFileData($file), $moduleName, $forceReload);
         }
+
         return $this;
     }
 
     /**
-     * Loading current theme translation
+     * Loading current theme translation.
      *
      * @param bool $forceReload (optional)
+     *
      * @return Ffuenf_DevTools_Model_Translate
      */
     protected function _loadThemeTranslation($forceReload = false)
@@ -110,16 +117,18 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         // Now add current package translate.csv
         $file = Mage::getDesign()->getLocaleFileName('translate.csv');
         $this->_addData($this->_getFileData($file), false, $forceReload);
+
         return $this;
     }
 
     /**
      * Retrieve translated template file
-     * Try current design package first
+     * Try current design package first.
      *
-     * @param string $file
-     * @param string $type
+     * @param string      $file
+     * @param string      $type
      * @param string|null $localeCode
+     *
      * @return string
      */
     public function getTemplateFile($file, $type, $localeCode = null)
@@ -127,12 +136,13 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         if (is_null($localeCode) || preg_match('/[^a-zA-Z_]/', $localeCode)) {
             $localeCode = $this->getLocale();
         }
-        $filePath = $this->getLocaleOverrideFile($localeCode, 'template' . DS . $type . DS . $file);
+        $filePath = $this->getLocaleOverrideFile($localeCode, 'template'.DS.$type.DS.$file);
         if (empty($filePath) || !file_exists($filePath)) {
             return parent::getTemplateFile($file, $type, $localeCode);
         }
         $ioAdapter = new Varien_Io_File();
         $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
-        return (string)$ioAdapter->read($filePath);
+
+        return (string) $ioAdapter->read($filePath);
     }
 }

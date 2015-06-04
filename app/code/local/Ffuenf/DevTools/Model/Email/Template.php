@@ -1,16 +1,17 @@
 <?php
+
 /**
- * Ffuenf_DevTools extension
- * 
+ * Ffuenf_DevTools extension.
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the MIT License
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
- * 
+ *
  * @category   Ffuenf
- * @package    Ffuenf_DevTools
+ *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
@@ -40,10 +41,11 @@ if (Mage::helper('core')->isModuleEnabled('Aschroder_SMTPPro') && class_exists('
 class Ffuenf_DevTools_Model_Email_Template extends Ffuenf_DevTools_Model_Email_Template_Wrapper
 {
     /**
-     * Initialize design information for template processing
+     * Initialize design information for template processing.
      *
-     * @param   array $config
-     * @return  Mage_Core_Model_Template
+     * @param array $config
+     *
+     * @return Mage_Core_Model_Template
      */
     public function setDesignConfig(array $config)
     {
@@ -53,6 +55,7 @@ class Ffuenf_DevTools_Model_Email_Template extends Ffuenf_DevTools_Model_Email_T
                 Mage::register('emailoverride.store', $config['store'], true);
             }
         }
+
         return parent::setDesignConfig($config);
     }
 }
