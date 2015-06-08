@@ -57,6 +57,37 @@
                 <class>Ffuenf_DevTools_Helper</class>
             </ffuenf_devtools>
         </helpers>
+        <!-- add manufacturer to collection (https://www.atwix.com/magento/accessing-custom-attribute-at-checkout-or-cart/) -->
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </quote>
+            <order_invoice>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_invoice>
+            <order_shipment>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_shipment>
+            <order_creditmemo>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_creditmemo>
+        </sales>
     </global>
     <admin>
         <routers>
