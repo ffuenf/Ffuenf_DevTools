@@ -76,26 +76,26 @@
             <groups>
                 <backup translate="label" module="ffuenf_devtools">
                     <label>Backup Configuration</label>
-                    <sort_order>1000</sort_order>
+                    <sort_order>2000</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <path translate="label">
+                        <dump_database_script_path translate="label">
                             <label>Path to database_dump shell script</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>140</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </path>
+                        </dump_database_script_path>
                     </fields>
                 </backup>
             </groups>
             <groups>
                 <magerun>
                     <label>magerun</label>
-                    <sort_order>2000</sort_order>
+                    <sort_order>3000</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -115,7 +115,7 @@
                 <headerbar translate="label">
                     <label>Header Bar</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>10</sort_order>
+                    <sort_order>4000</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>0</show_in_website>
                     <show_in_store>0</show_in_store>

@@ -25,6 +25,9 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     const CONFIG_EXTENSION_HEADERBAR_COMMIT = 'ffuenf_devtools/headerbar/commit';
     const CONFIG_EXTENSION_HEADERBAR_TAG = 'ffuenf_devtools/headerbar/tag';
 
+    private $_domain = null;
+    private $_className = null;
+
     /**
      * Variable for if the extension is active.
      *
