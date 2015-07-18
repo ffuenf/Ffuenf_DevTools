@@ -25,6 +25,7 @@ The following versions are supported and tested:
 * Magento Community Edition 1.7.0.2
 * Magento Community Edition 1.8.1.0
 * Magento Community Edition 1.9.1.1
+* Magento Community Edition 1.9.2.0
 
 Other versions are assumed to work.
 

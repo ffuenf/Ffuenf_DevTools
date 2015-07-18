@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.0.1 (July 18, 2015)
+
+* add possibility to mass delete URL-Rewrites
+
 ## 2.0.0 (May 25, 2015)
 
 * add environment header in backend (credits to [Magento-AdminHeaderTheme](https://github.com/Zookal/Magento-AdminHeaderTheme) by Cyrill Schumacher)

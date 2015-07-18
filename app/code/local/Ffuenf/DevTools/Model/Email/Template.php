@@ -17,8 +17,13 @@
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-// Allow for an override of Aschroder_SMTPPro_Model_Email_Template
-if (Mage::helper('core')->isModuleEnabled('Aschroder_SMTPPro') && class_exists('Aschroder_SMTPPro_Model_Email_Template')) {
+// Allow for an override of Aschroder_Email_Model_Email_Template
+if (Mage::helper('core')->isModuleEnabled('Aschroder_Email') && class_exists('Aschroder_Email_Model_Email_Template')) {
+    class Ffuenf_DevTools_Model_Email_Template_Wrapper extends Aschroder_Email_Model_Email_Template
+    {
+    }
+// Allow for an override of Aschroder_Email_Model_Email_Template
+} elseif (Mage::helper('core')->isModuleEnabled('Aschroder_SMTPPro') && class_exists('Aschroder_SMTPPro_Model_Email_Template')) {
     class Ffuenf_DevTools_Model_Email_Template_Wrapper extends Aschroder_SMTPPro_Model_Email_Template
     {
     }

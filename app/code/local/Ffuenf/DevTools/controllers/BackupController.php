@@ -48,4 +48,13 @@ class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
         }
         $this->_redirect('devtools/backup/index');
     }
+
+    /**
+     * check whether the current user is allowed to access this controller
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('ffuenf_devtools');
+    }
 }
