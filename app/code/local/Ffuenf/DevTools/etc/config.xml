@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_DevTools>
-            <version>2.0.1</version>
+	    <version>2.0.2</version>
         </Ffuenf_DevTools>
     </modules>
     <global>
@@ -96,17 +96,10 @@
     </global>
     <admin>
         <routers>
-            <ffuenf_devtools>
-                <use>admin</use>
-                <args>
-                    <module>Ffuenf_DevTools</module>
-                    <frontName>devtools</frontName>
-                </args>
-            </ffuenf_devtools>
             <adminhtml>
                 <args>
                     <modules>
-                        <ffuenf_devtools before="Mage_Adminhtml">Ffuenf_DevTools_Adminhtml</ffuenf_devtools>
+			<ffuenf_devtools after="Mage_Adminhtml">Ffuenf_DevTools_Adminhtml</ffuenf_devtools>
                     </modules>
                 </args>
             </adminhtml>
