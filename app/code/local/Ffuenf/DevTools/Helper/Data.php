@@ -170,23 +170,25 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     }
 
     /**
-     * @param string                                $localeCode
-     * @param string                                $fileName
-     * @param string|int|Mage_Core_Model_Store|null $store      (optional)
+     * @param string  $localeCode
+     * @param string  $fileName
+     * @param string|int|Mage_Core_Model_Store|null $store  (optional)
      *
      * @return string|null
      */
     public function getLocaleOverrideFile($localeCode, $fileName, $store = null)
     {
         $paths = $this->getLocalePaths($store);
-        foreach ($paths as $path) {
-            $filePath = $path.DS.$localeCode.DS.$fileName;
-            if (!empty($filePath) && file_exists($filePath)) {
-                return $filePath;
+        $localCodes = $localeCode === 'en_US' ? array($localeCode) : array($localeCode, 'en_US');
+        foreach ($localCodes as $localeCode) {
+            foreach ($paths as $path) {
+                $filePath = $path . DS . $localeCode . DS . $fileName;
+                if (!empty($filePath) && file_exists($filePath)) {
+                    return $filePath;
+                }
             }
         }
-
-        return;
+        return null;
     }
 
     /**
@@ -200,15 +202,15 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         $design = $this->getDesign($store);
         $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.$design['theme'].DS.'locale';
         // Check for fallback support
-        $fallbackModel = Mage::getModel('core/design_fallback');
-        if (!empty($fallbackModel)) {
-            $fallbackSchemes = $fallbackModel->getFallbackScheme('frontend', $design['package'], $design['theme']);
-            if (!empty($fallbackSchemes)) {
-                foreach ($fallbackSchemes as $scheme) {
-                    if (!isset($scheme['_package']) || !isset($scheme['_theme'])) {
-                        continue;
+        if ($this->supportsDesignFallback()) {
+            $fallbackModel = Mage::getModel('core/design_fallback');
+            if (!empty($fallbackModel)) {
+                $fallbackSchemes = $fallbackModel->getFallbackScheme('frontend', $design['package'], $design['theme']);
+                if (!empty($fallbackSchemes)) {
+                    foreach($fallbackSchemes as $scheme) {
+                        if(!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
+                        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
                     }
-                    $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
                 }
             }
         }
@@ -216,7 +218,6 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'default'.DS.'default'.DS.'locale';
         $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'base'.DS.'default'.DS.'locale';
         $paths[] = Mage::getBaseDir('locale');
-
         return $paths;
     }
 
@@ -248,19 +249,14 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         if (empty($packageName) || in_array($theme, array('base', 'default'))) {
             $packageName = Mage::getStoreConfig('design/package/name', $store);
         }
-        if (empty($theme)) {
-            $theme = Mage::getStoreConfig('design/theme/default', $store);
-        }
         if (empty($theme) || in_array($theme, array('default'))) {
             $theme = Mage::getStoreConfig('design/theme/locale', $store);
         }
-        if (empty($packageName)) {
-            $packageName = 'default';
-        }
         if (empty($theme)) {
-            $theme = 'default';
+            $theme = Mage::getStoreConfig('design/theme/default', $store);
         }
-
+        if (empty($packageName)) $packageName = 'default';
+        if (empty($theme)) $theme = 'default';
         return array(
             'package' => $packageName,
             'theme' => $theme,
@@ -363,7 +359,18 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         }
         $path = strtolower(rtrim(trim(Mage::getStoreConfig('web/unsecure/base_url')), '/'));
         $this->_domain = str_replace(array('http://', 'https://'), '', $path);
-
         return $this->_domain;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function supportsDesignFallback()
+    {
+        // Check for the right file
+        if (file_exists(BP . '/app/code/core/Mage/Core/Model/Design/Fallback.php') == false) {
+            return false;
+        }
+        return true;
     }
 }

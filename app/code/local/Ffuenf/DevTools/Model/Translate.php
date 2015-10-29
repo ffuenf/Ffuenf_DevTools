@@ -18,12 +18,12 @@
  */
 
 /**
- * EmailOverride Core model.
+ * EmailOverride Core model
  */
 class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
 {
     /**
-     * Retrieve translation file for module.
+     * Retrieve translation file for module
      *
      * @param string $module
      * @param string $fileName
@@ -43,12 +43,11 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         if (!empty($filePath) && file_exists($filePath)) {
             return $filePath;
         }
-
         return parent::_getModuleFilePath($module, $fileName);
     }
 
     /**
-     * Custom function to return override folder for locales.
+     * Custom function to return override folder for locales
      *
      * @param string $localeCode
      * @param string $fileName
@@ -66,10 +65,10 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
     }
 
     /**
-     * Loading data from module translation files.
+     * Loading data from module translation files
      *
      * @param string $moduleName
-     * @param array  $files
+     * @param string $files
      * @param bool   $forceReload (optional)
      *
      * @return Ffuenf_DevTools_Model_Translate
@@ -85,12 +84,11 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
             }
             $this->_addData($this->_getFileData($file), $moduleName, $forceReload);
         }
-
         return $this;
     }
 
     /**
-     * Loading current theme translation.
+     * Loading current theme translation
      *
      * @param bool $forceReload (optional)
      *
@@ -99,36 +97,31 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
     protected function _loadThemeTranslation($forceReload = false)
     {
         // Check for fallback support
-        $fallbackModel = Mage::getModel('core/design_fallback');
-        if (empty($fallbackModel)) {
+        if (Mage::helper('emailoverride')->supportsDesignFallback() == false) {
             return parent::_loadThemeTranslation($forceReload);
         }
         // First add fallback package translate.csv files
+        $fallbackModel = Mage::getModel('core/design_fallback');
         $designPackage = Mage::getSingleton('core/design_package');
         $fallbacks = $fallbackModel->getFallbackScheme($designPackage->getArea(), $designPackage->getPackageName(), $designPackage->getTheme('layout'));
         foreach ($fallbacks as $fallback) {
-            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) {
-                continue;
-            }
-            // first one is empty for some reason
+            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) continue; // first one is empty for some reason
             $fallbackFile = $designPackage->getLocaleFileName('translate.csv', array('_package' => $fallback['_package']));
             $this->_addData($this->_getFileData($fallbackFile), false, $forceReload);
         }
         // Now add current package translate.csv
         $file = Mage::getDesign()->getLocaleFileName('translate.csv');
         $this->_addData($this->_getFileData($file), false, $forceReload);
-
         return $this;
     }
 
     /**
      * Retrieve translated template file
-     * Try current design package first.
+     * Try current design package first
      *
-     * @param string      $file
-     * @param string      $type
-     * @param string|null $localeCode
-     *
+     * @param string $file
+     * @param string $type
+     * @param string $localeCode
      * @return string
      */
     public function getTemplateFile($file, $type, $localeCode = null)
@@ -142,7 +135,6 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         }
         $ioAdapter = new Varien_Io_File();
         $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
-
         return (string) $ioAdapter->read($filePath);
     }
 }

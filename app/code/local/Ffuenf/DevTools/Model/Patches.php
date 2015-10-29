@@ -18,42 +18,63 @@
  */
 class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
 {
-    private $_patchFile;
+
+    /**
+    * Use to store applied patches.
+    *
+    * @var array
+    */
     public $appliedPatches = array();
 
+    /**
+    * Use to hold location reference to  `applied.patches.list` file.
+    *
+    * @var string
+    */
+    private $patchFile;
+
+    /**
+    * Constructor
+    *
+    * Use to load the applied patches array.
+    *
+    * @return void
+    */
     protected function _construct()
     {
-        $this->_patchFile = Mage::getBaseDir('etc').DS.'applied.patches.list';
+        $this->patchFile = Mage::getBaseDir('etc') . DS . 'applied.patches.list';
         $this->_loadPatchFile();
     }
 
     /**
-     * load patch file.
-     */
+    * Use to get patches.
+    *
+    * @return string
+    */
+    public function getPatches()
+    {
+        return implode(', ',$this->appliedPatches);
+    }
+
+    /**
+    * Use to load the patches array with applied patches.
+    *
+    * @return void
+    */
     protected function _loadPatchFile()
     {
         $ioAdapter = new Varien_Io_File();
-        if (!$ioAdapter->fileExists($this->_patchFile)) {
+        if (!$ioAdapter->fileExists($this->patchFile)) {
             return;
         }
-        $ioAdapter->open(array('path' => $ioAdapter->dirname($this->_patchFile)));
-        $ioAdapter->streamOpen($this->_patchFile, 'r');
+        $ioAdapter->open(array('path' => $ioAdapter->dirname($this->patchFile)));
+        $ioAdapter->streamOpen($this->patchFile, 'r');
         while ($buffer = $ioAdapter->streamRead()) {
-            if (stristr($buffer, '|') && stristr($buffer, 'SUPEE')) {
-                list($date, , $patch) = array_map('trim', explode('|', $buffer));
+            if (stristr($buffer,'|')) {
+                list($date, $patch) = array_map('trim', explode('|', $buffer));
                 $this->appliedPatches[] = $patch;
             }
         }
         $ioAdapter->streamClose();
-    }
-
-    /**
-     * Get applied patches.
-     *
-     * @return string
-     */
-    public function getPatches()
-    {
-        return implode(', ', $this->appliedPatches);
     }
 }

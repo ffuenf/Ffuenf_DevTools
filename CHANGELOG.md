@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.0.3 (October 29, 2015)
+
+* update to notice of applied patches
+* update to possibility of overriding email templates in your own Magento theme
+
 ## 2.0.2 (October 22, 2015)
 
 * compatibility to [SUPEE-6788](https://info2.magento.com/rs/318-XBX-392/images/SUPEE-6788-Technical%20Details.pdf?mkt_tok=3RkMMJWWfF9wsRolv6jPZKXonjHpfsX66uskXqOxlMI%2F0ER3fOvrPUfGjI4CSMFjI%2BSLDwEYGJlv6SgFSbHNMbhiwrgOUhM%3D)
