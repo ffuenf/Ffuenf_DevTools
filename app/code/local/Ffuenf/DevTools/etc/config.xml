@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_DevTools>
-            <version>2.0.3</version>
+            <version>2.1.0</version>
         </Ffuenf_DevTools>
     </modules>
     <global>
@@ -44,6 +44,9 @@
                 </rewrite>
                 <rewrite>
                     <email_template>Ffuenf_DevTools_Model_Email_Template</email_template>
+                </rewrite>
+                <rewrite>
+                    <layout>Ffuenf_DevTools_Model_Layout</layout>
                 </rewrite>
             </core>
         </models>
@@ -147,6 +150,7 @@
                 <path>../tools/n98-magerun.phar</path>
             </magerun>
             <headerbar>
+                <enable>0</enable>
                 <production_path></production_path>
                 <staging_path></staging_path>
                 <development_path></development_path>

@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.0 (October 30, 2015)
+
+* add layout xml conditions (credits to [Aoe_LayoutConditions](https://github.com/fbrnc/Aoe_LayoutConditions) by Fabrizio Branca)
+* conditionally enable headerbar in backend (and make css dependent)
+* add test whether extension uses the old-style admin routing.
+
 ## 2.0.3 (October 29, 2015)
 
 * update to notice of applied patches

@@ -21,10 +21,10 @@
     <default>
         <reference name="before_body_end">
             <block type="core/template" template="devtools/appliedpatches.phtml" name="ffuenf.applied.patches"/>
-            <block after="-" type="ffuenf_devtools/adminhtml_headerbar" name="ffuenf.headerbar"/>
+            <block after="-" type="ffuenf_devtools/adminhtml_headerbar" name="ffuenf.headerbar" ifconfig="ffuenf_devtools/headerbar/enable"/>
         </reference>
         <reference name="head">
-            <action method="addCss">
+            <action method="addCss" ifconfig="ffuenf_devtools/headerbar/enable">
                 <name>headerbar.css</name>
             </action>
         </reference>
