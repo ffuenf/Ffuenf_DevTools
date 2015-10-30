@@ -77,6 +77,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testGetOldAdminRouting()
     {
         $routers = Mage::getConfig()->getNode('admin/routers');
+        $offendingExtensions = array();
         foreach ($routers[0] as $router) {
             $name = $router->args->module;
             if ($name != 'Mage_Adminhtml') {
