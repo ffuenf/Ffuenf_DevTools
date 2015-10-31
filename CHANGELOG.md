@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.1 (November 1, 2015)
+
+* add more layout xml conditions (credits to [magehandles](https://github.com/aleron75/magehandles) by Alessandro Ronchi)
+
 ## 2.1.0 (October 30, 2015)
 
 * add layout xml conditions (credits to [Aoe_LayoutConditions](https://github.com/fbrnc/Aoe_LayoutConditions) by Fabrizio Branca)

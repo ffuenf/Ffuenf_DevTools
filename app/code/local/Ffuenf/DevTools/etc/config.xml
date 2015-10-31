@@ -20,7 +20,7 @@
 <config>
     <modules>
         <Ffuenf_DevTools>
-            <version>2.1.0</version>
+            <version>2.1.1</version>
         </Ffuenf_DevTools>
     </modules>
     <global>
@@ -97,6 +97,18 @@
             </order_creditmemo>
         </sales>
     </global>
+    <frontend>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <ffuenf_devtools_customhandles>
+                        <class>ffuenf_devtools/customhandles</class>
+                        <method>addCustomHandles</method>
+                    </ffuenf_devtools_customhandles>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>
