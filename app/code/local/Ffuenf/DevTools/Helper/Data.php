@@ -21,6 +21,8 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
     const CONFIG_EXTENSION_ACTIVE = 'ffuenf_devtools/general/enable';
     const CONFIG_EXTENSION_MAGERUNPATH = 'ffuenf_devtools/magerun/path';
     const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH = 'ffuenf_devtools/backup/dump_database_script_path';
+    const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMEFROM = 'ffuenf_devtools/resaveproducts/timeframefrom';
+    const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETO = 'ffuenf_devtools/resaveproducts/timeframeto';
     const CONFIG_EXTENSION_HEADERBAR_BRANCH = 'ffuenf_devtools/headerbar/branch';
     const CONFIG_EXTENSION_HEADERBAR_COMMIT = 'ffuenf_devtools/headerbar/commit';
     const CONFIG_EXTENSION_HEADERBAR_TAG = 'ffuenf_devtools/headerbar/tag';
@@ -55,6 +57,20 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
      * @var string
      */
     protected $_sDumpDatabaseScriptPath;
+
+    /**
+     * Variable for the timeframe of resaving products
+     *
+     * @var string
+     */
+    protected $_sResaveProductsTimeframeFrom;
+
+    /**
+     * Variable for the timeframe of resaving products
+     *
+     * @var string
+     */
+    protected $_sResaveProductsTimeframeTo;
 
     /**
      * Variable for the current git branch.
@@ -374,6 +390,26 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_DevTools_Helper_Core
         return true;
     }
     
+    /**
+     * Get timeframe of resaving products.
+     *
+     * @throws Mage_Core_Exception
+     */
+    public function getResaveProductsTimeframeFrom()
+    {
+        return strtotime($this->getStoreConfig(self::CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMEFROM, '_sResaveProductsTimeframeFrom'));
+    }
+
+    /**
+     * Get timeframe of resaving products.
+     *
+     * @throws Mage_Core_Exception
+     */
+    public function getResaveProductsTimeframeTo()
+    {
+        return strtotime($this->getStoreConfig(self::CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETO, '_sResaveProductsTimeframeTo'));
+    }
+
     public function isBirthday($birthdate)
     {
         if (empty($birthdate)) {

@@ -112,6 +112,35 @@
                 </magerun>
             </groups>
             <groups>
+                <resaveproducts translate="label" module="ffuenf_devtools">
+                    <label>Resave Products Configuration</label>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <timeframefrom translate="label">
+                            <label>Timeframe for resaving products by the shell script (from)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ffuenf_devtools/adminhtml_system_config_date</frontend_model>
+                            <validate>required-entry</validate>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timeframefrom>
+                        <timeframeto translate="label">
+                            <label>Timeframe for resaving products by the shell script (to)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ffuenf_devtools/adminhtml_system_config_date</frontend_model>
+                            <validate>required-entry</validate>
+                            <sort_order>141</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timeframeto>
+                    </fields>
+                </resaveproducts>
                 <headerbar translate="label">
                     <label>Header Bar</label>
                     <frontend_type>text</frontend_type>

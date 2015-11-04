@@ -15,6 +15,7 @@ matrix:
   - php: hhvm
 env:
   matrix:
+  - MAGENTO_VERSION=magento-mirror-1.9.2.2
   - MAGENTO_VERSION=magento-mirror-1.9.2.1
   - MAGENTO_VERSION=magento-ce-1.9.1.1
   - MAGENTO_VERSION=magento-ce-1.8.1.0

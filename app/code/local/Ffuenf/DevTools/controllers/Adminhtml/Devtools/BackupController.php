@@ -16,7 +16,7 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
+class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
 {
     protected function _initAction()
     {
@@ -29,6 +29,7 @@ class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
     public function indexAction()
     {
         $this->loadLayout();
+        $this->_setActiveMenu('devtools/backup');
         $this->_addContent($this->getLayout()->createBlock('adminhtml/template')->setTemplate('devtools/backup.phtml'));
         $this->renderLayout();
     }
@@ -46,7 +47,7 @@ class Ffuenf_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
         } else {
             Mage::getSingleton('core/session')->addError($helper->__('Could not open backup script.'));
         }
-        $this->_redirect('devtools/backup/index');
+        $this->_redirect('*/*/');
     }
 
     /**

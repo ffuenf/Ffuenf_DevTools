@@ -66,7 +66,7 @@ class Ffuenf_DevTools_Model_CustomHandles
             /** @var Mage_Customer_Model_Customer $currentCustomer */
             $currentCustomer = $customerHelper->getCurrentCustomer();
             if ($birthDate = $currentCustomer->getDob()) {
-                $helper = Mage::helper('aleron75_magehandles');
+                $helper = Mage::helper('ffuenf_devtools');
                 if ($helper->isBirthday($birthDate)) {
                     $updateManager->addHandle("customer_birthday");
                 }
@@ -91,7 +91,7 @@ class Ffuenf_DevTools_Model_CustomHandles
 
     private function _addSeasonHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
-        $helper = Mage::helper('aleron75_magehandles');
+        $helper = Mage::helper('ffuenf_devtools');
         $season = $helper->getSeason();
         $updateManager->addHandle("season_{$season}");
     }

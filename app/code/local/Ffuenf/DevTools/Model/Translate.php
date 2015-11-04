@@ -97,7 +97,7 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
     protected function _loadThemeTranslation($forceReload = false)
     {
         // Check for fallback support
-        if (Mage::helper('emailoverride')->supportsDesignFallback() == false) {
+        if (Mage::helper('ffuenf_devtools')->supportsDesignFallback() == false) {
             return parent::_loadThemeTranslation($forceReload);
         }
         // First add fallback package translate.csv files

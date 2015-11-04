@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.2 (November 4, 2015)
+
+* add resave-products shell script (timeframe configurable via backend settings)
+* fix wrong helpers
+* fix compatibility to [SUPEE-6788](https://info2.magento.com/rs/318-XBX-392/images/SUPEE-6788-Technical%20Details.pdf?mkt_tok=3RkMMJWWfF9wsRolv6jPZKXonjHpfsX66uskXqOxlMI%2F0ER3fOvrPUfGjI4CSMFjI%2BSLDwEYGJlv6SgFSbHNMbhiwrgOUhM%3D)
+
 ## 2.1.1 (November 1, 2015)
 
 * add more layout xml conditions (credits to [magehandles](https://github.com/aleron75/magehandles) by Alessandro Ronchi)

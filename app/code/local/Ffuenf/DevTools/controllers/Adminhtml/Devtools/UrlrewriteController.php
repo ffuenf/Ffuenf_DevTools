@@ -18,7 +18,7 @@
  */
 
 require_once('Mage/Adminhtml/controllers/UrlrewriteController.php');
-class Ffuenf_Devtools_Adminhtml_UrlrewriteController extends Mage_Adminhtml_UrlrewriteController
+class Ffuenf_Devtools_Adminhtml_Devtools_UrlrewriteController extends Mage_Adminhtml_UrlrewriteController
 {
     /**
      * mass delete action, deletes the selected url rewrites
