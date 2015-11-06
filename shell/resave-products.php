@@ -71,9 +71,9 @@ class Resave_Products extends Mage_Shell_Abstract
         );
     }
 
-    public function batchIndividual($model)
+    public function batchIndividual($item)
     {
-        $product = Mage::getModel('catalog/product')->load($model->getId());
+        $product = Mage::getModel('catalog/product')->load($item->getId());
         $product->setIsChanged(true);
         echo $product->getId()."\r\n";
         $product->save();

@@ -134,11 +134,17 @@
         <menu>
             <system>
                 <children>
-                    <ffuenf_devtools module="ffuenf_devtools">
+                    <devtools module="ffuenf_devtools">
                         <title>DevTools</title>
                         <sort_order>0</sort_order>
-                        <action>adminhtml/devtools_backup</action>
-                    </ffuenf_devtools>
+                        <children>
+                            <backup module="ffuenf_devtools">
+                                <title>Backup</title>
+                                <sort_order>0</sort_order>
+                                <action>adminhtml/devtools_backup</action>
+                            </backup>
+                        </children>
+                    </devtools>
                 </children>
             </system>
         </menu>

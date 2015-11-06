@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -22,6 +21,7 @@
  *
  * @loadSharedFixture shared
  */
+
 class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
 {
     /**

@@ -17,10 +17,10 @@ env:
   matrix:
   - MAGENTO_VERSION=magento-mirror-1.9.2.2
   - MAGENTO_VERSION=magento-mirror-1.9.2.1
-  - MAGENTO_VERSION=magento-ce-1.9.1.1
-  - MAGENTO_VERSION=magento-ce-1.8.1.0
-  - MAGENTO_VERSION=magento-ce-1.7.0.2
-  - MAGENTO_VERSION=magento-ce-1.6.2.0
+  - MAGENTO_VERSION=magento-mirror-1.9.1.1
+  - MAGENTO_VERSION=magento-mirror-1.8.1.0
+  - MAGENTO_VERSION=magento-mirror-1.7.0.2
+  - MAGENTO_VERSION=magento-mirror-1.6.2.0
   global:
     secure: Bb+kvyzJJCM1GIJGpxwyh1WlGjroJTmGWUrIibpanPCasj0c42M4srHflprHjaBxePu2jYKb15M/V3pzeKMdyzRHirbByKVWEHGq+9JXw0S894YXNbLITEFhfELt8flfziKzdYmRlmpXzfvxiUzPNdoc3TjlgF0gY4Ai/XAgxcE=
 script:

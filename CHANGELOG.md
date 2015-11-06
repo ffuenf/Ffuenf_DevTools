@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.3 (November 6, 2015)
+
+* switch completely to OpenMage mirrors in travis tests
+* cache helper in model
+* code style
+* relocate admin routes (compatibility to SUPEE-6788)
+
 ## 2.1.2 (November 4, 2015)
 
 * add resave-products shell script (timeframe configurable via backend settings)

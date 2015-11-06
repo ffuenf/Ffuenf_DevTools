@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -16,9 +15,31 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
+
 class Ffuenf_DevTools_Model_CustomHandles
 {
     /**
+     * Cached helper
+     *
+     * @var Ffuenf_DevTools_Helper_Data
+     */
+    protected $_helper;
+
+    /**
+     * Get helper
+     *
+     * @return Ffuenf_DevTools_Helper_Data
+     */
+    protected function _getHelper()
+    {
+        if (is_null($this->_helper)) {
+            $this->_helper = Mage::helper('ffuenf_devtools');
+        }
+        return $this->_helper;
+    }
+
+    /**
+     * @param $observer Varien_Event_Observer
      * @fire adminhtml_controller_action_predispatch_start
      */
     public function addCustomHandles(Varien_Event_Observer $observer)
@@ -32,6 +53,9 @@ class Ffuenf_DevTools_Model_CustomHandles
         $this->_addSeasonHandle($updateManager);
     }
 
+    /**
+     * @param $updateManager Mage_Core_Model_Layout_Update
+     */
     private function _addCustomerGroupHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
         $customerHelper = Mage::helper('customer');
@@ -43,6 +67,9 @@ class Ffuenf_DevTools_Model_CustomHandles
         }
     }
 
+    /**
+     * @param $updateManager Mage_Core_Model_Layout_Update
+     */
     private function _addCustomerGenderHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
         $customerHelper = Mage::helper('customer');
@@ -52,13 +79,16 @@ class Ffuenf_DevTools_Model_CustomHandles
             if ($genderOptionId = $currentCustomer->getGender()) {
                 $gender = strtolower($currentCustomer->getResource()
                     ->getAttribute('gender')
-                        ->getSource()
-                            ->getOptionText($genderOptionId));
+                    ->getSource()
+                    ->getOptionText($genderOptionId));
                 $updateManager->addHandle("customer_gender_{$gender}");
             }
         }
     }
 
+    /**
+     * @param $updateManager Mage_Core_Model_Layout_Update
+     */
     private function _addCustomerBirthdayHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
         $customerHelper = Mage::helper('customer');
@@ -66,7 +96,7 @@ class Ffuenf_DevTools_Model_CustomHandles
             /** @var Mage_Customer_Model_Customer $currentCustomer */
             $currentCustomer = $customerHelper->getCurrentCustomer();
             if ($birthDate = $currentCustomer->getDob()) {
-                $helper = Mage::helper('ffuenf_devtools');
+                $helper = $this->_getHelper();
                 if ($helper->isBirthday($birthDate)) {
                     $updateManager->addHandle("customer_birthday");
                 }
@@ -74,6 +104,9 @@ class Ffuenf_DevTools_Model_CustomHandles
         }
     }
 
+    /**
+     * @param $updateManager Mage_Core_Model_Layout_Update
+     */
     private function _addCustomerIsSubscribedHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
         $customerHelper = Mage::helper('customer');
@@ -89,9 +122,12 @@ class Ffuenf_DevTools_Model_CustomHandles
         }
     }
 
+    /**
+     * @param $updateManager Mage_Core_Model_Layout_Update
+     */
     private function _addSeasonHandle(Mage_Core_Model_Layout_Update $updateManager)
     {
-        $helper = Mage::helper('ffuenf_devtools');
+        $helper = $this->_getHelper();
         $season = $helper->getSeason();
         $updateManager->addHandle("season_{$season}");
     }

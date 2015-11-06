@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -16,6 +15,7 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
+
 class Ffuenf_DevTools_Block_Adminhtml_System_Config_Date extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)

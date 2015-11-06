@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -16,7 +15,8 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-class Ffuenf_DevTools_Block_Backup extends Mage_Adminhtml_Block_Widget_Grid_Container
+
+class Ffuenf_DevTools_Block_Adminhtml_Widget_Grid_Backup extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     public function __construct()
     {

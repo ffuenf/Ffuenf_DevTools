@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *

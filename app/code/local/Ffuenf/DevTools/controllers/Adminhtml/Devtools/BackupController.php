@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -16,7 +15,8 @@
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Mage_Adminhtml_Controller_Action
+
+class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Ffuenf_DevTools_Controller_Abstract
 {
     protected function _initAction()
     {
@@ -50,12 +50,4 @@ class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Mage_Adminhtml
         $this->_redirect('*/*/');
     }
 
-    /**
-     * check whether the current user is allowed to access this controller
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return Mage::getSingleton('admin/session')->isAllowed('ffuenf_devtools');
-    }
 }

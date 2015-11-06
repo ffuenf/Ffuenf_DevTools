@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Ffuenf_DevTools extension.
  *
@@ -17,9 +16,6 @@
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-/**
- * EmailOverride Core model
- */
 class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
 {
     /**
