@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.4 (November 8, 2015)
+
+* switch back to official builds for versions > 1.9.0.0 in travis tests
+* notes about compatibility
+
 ## 2.1.3 (November 6, 2015)
 
 * switch completely to OpenMage mirrors in travis tests
