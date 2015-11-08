@@ -16,12 +16,12 @@ matrix:
   - php: hhvm
 env:
   matrix:
-  - MAGENTO_VERSION=magento-mirror-1.9.2.2
-  - MAGENTO_VERSION=magento-mirror-1.9.2.1
-  - MAGENTO_VERSION=magento-mirror-1.9.1.1
-  - MAGENTO_VERSION=magento-mirror-1.8.1.0
-  - MAGENTO_VERSION=magento-mirror-1.7.0.2
-  - MAGENTO_VERSION=magento-mirror-1.6.2.0
+  - MAGENTO_VERSION=magento-ce-1.9.2.2
+  - MAGENTO_VERSION=magento-ce-1.9.2.1
+  - MAGENTO_VERSION=magento-ce-1.9.1.1
+  - MAGENTO_VERSION=magento-ce-1.8.1.0
+  - MAGENTO_VERSION=magento-ce-1.7.0.2
+  - MAGENTO_VERSION=magento-ce-1.6.2.0
   global:
   - secure: l/ujJqNgSCzkoR7tHNzw5uv5psXhbgWeTUU3CutjtQlDJ8dLODwKCZq/opppDIBwdQhNOuDAdj9F+jSzfq4F52chCM4wb+2oH+eOxOtmUrd0lJU/ePFuQi17UJAIy7qif6ofMtRCdui+IYPpenEoxP/JrMcNAhuRpiOeJ74b1yU=
   - secure: azhyY7cLNKo37i4Ow5SEUpK2Icl3CE3E9SlzvCxLPDRXRfigoyPz+zonkIoazqgDM78w4XApuJBDC50rWrA0jAUVde5flzbeH5hW0+NnkAQHLZ3L8wUqNAA2TBQjOzm8fMEvvtBud2Z/ReSMVHTfJDgxJRQdgX3ScImfkUxxb1k=
