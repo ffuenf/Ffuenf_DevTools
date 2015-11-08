@@ -10,6 +10,7 @@ php:
 matrix:
   allow_failures:
   - php: 5.3
+  - php: 5.4
   - php: 5.6
   - php: 7.0
   - php: hhvm
@@ -22,9 +23,12 @@ env:
   - MAGENTO_VERSION=magento-mirror-1.7.0.2
   - MAGENTO_VERSION=magento-mirror-1.6.2.0
   global:
-    secure: Bb+kvyzJJCM1GIJGpxwyh1WlGjroJTmGWUrIibpanPCasj0c42M4srHflprHjaBxePu2jYKb15M/V3pzeKMdyzRHirbByKVWEHGq+9JXw0S894YXNbLITEFhfELt8flfziKzdYmRlmpXzfvxiUzPNdoc3TjlgF0gY4Ai/XAgxcE=
+  - secure: l/ujJqNgSCzkoR7tHNzw5uv5psXhbgWeTUU3CutjtQlDJ8dLODwKCZq/opppDIBwdQhNOuDAdj9F+jSzfq4F52chCM4wb+2oH+eOxOtmUrd0lJU/ePFuQi17UJAIy7qif6ofMtRCdui+IYPpenEoxP/JrMcNAhuRpiOeJ74b1yU=
+  - secure: azhyY7cLNKo37i4Ow5SEUpK2Icl3CE3E9SlzvCxLPDRXRfigoyPz+zonkIoazqgDM78w4XApuJBDC50rWrA0jAUVde5flzbeH5hW0+NnkAQHLZ3L8wUqNAA2TBQjOzm8fMEvvtBud2Z/ReSMVHTfJDgxJRQdgX3ScImfkUxxb1k=
+  - secure: LibFvqogc8g8vmbt1JRAr/dyDhEUeIWVKCV5JYVLWUMx5ixTgw4UoISby0THgoMHejiqCFNDH6V1N4mUPZ2RqH7eiwbiQ8F2oUoMXehpwLiBrJLgXl8PCMFWi6oh9M/qa3mVX8K0TzRe5OEI26TlLYIG46d+I4LcYevilFHRYPs=
 script:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh | bash
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh
+  | bash
 notifications:
   slack:
-    secure: bnbXkNU/ikoUfeOql5IYGhHd0qbsJgT73lgxzh2WmZSBS8X+HMIGATRd/tc+BpUajcev2/dPTTx3Z+zuV7/WOC+VygJ9RvUqyLGqD6cunsP3werM0kVN9HqoxolqK+sUHemSNrNgsxejnr4PNzGBIq+gAr+PPoELpuLbrVcVGnA=
+    secure: dxvrDX8UWT8iNrhfpHYOYyzGqXT2+ZhVQ8L1UlBQfPUm8AXa304Ms/RaXtSQKfqEt6G1PpRmfanEtE57u7mWGWefCDsCHpANo8gfffJkEmUSixFkR51eMQPbhPlKCyn/KdLmnX8rAsAK4v44JrIH3vAhXL4yF/MFlVwbxtWkQvs=
