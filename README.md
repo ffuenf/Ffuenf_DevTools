@@ -21,14 +21,25 @@ Platform
 
 The following versions are supported and tested:
 
-* Magento Community Edition 1.6.2.0
-* Magento Community Edition 1.7.0.2
-* Magento Community Edition 1.8.1.0
-* Magento Community Edition 1.9.1.1
-* Magento Community Edition 1.9.2.0
 * Magento Community Edition 1.9.2.2
+* Magento Community Edition 1.9.2.1
+* Magento Community Edition 1.9.2.0
+* Magento Community Edition 1.9.1.1
+* Magento Community Edition 1.8.1.0
+* Magento Community Edition 1.7.0.2
+* Magento Community Edition 1.6.2.0
 
 Other versions are assumed to work.
+
+Requirements
+------------
+
+||  || PHP 5.3 || PHP 5.4 || PHP 5.5 || PHP 5.6 || PHP 7.0 ||
+| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC | EOL | EOL | STABLE | STABLE | RC |
+| tests | allow failure | allow failure | *required pass* | allow failure | allow failure |
+
+Magento Community Edition officially supports PHP 5.4 and PHP 5.5.
+Non-official compatibility to PHP 5.6 may be reached by following the tips on [Use of iconv.internal_encoding is deprecated](https://magento.stackexchange.com/questions/34015/magento-1-9-php-5-6-use-of-iconv-internal-encoding-is-deprecated).
 
 Installation
 ------------
