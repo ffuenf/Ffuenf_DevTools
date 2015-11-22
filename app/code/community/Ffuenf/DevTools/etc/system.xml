@@ -1,0 +1,518 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_DevTools extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   Ffuenf
+ *
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<config>
+    <tabs>
+        <ffuenf>
+            <label>ffuenf</label>
+            <sort_order>508</sort_order>
+        </ffuenf>
+    </tabs>
+    <sections>
+        <design>
+            <groups>
+                <admin translate="label" module="ffuenf_devtools">
+                    <label>Admin Theme</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <theme translate="label comment" module="ffuenf_devtools">
+                            <label>Admin theme name</label>
+                            <comment>Override default admin theme.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </theme>
+                    </fields>
+                </admin>
+            </groups>
+        </design>
+    </sections>
+    <sections>
+        <ffuenf_devtools translate="label" module="ffuenf_devtools">
+            <tab>ffuenf</tab>
+            <label>DevTools</label>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <expanded>1</expanded>
+            <groups>
+                <teaser translate="label" module="ffuenf_devtools">
+                    <frontend_model>Ffuenf_DevTools_Block_Adminhtml_System_Config_Fieldset_Teaser</frontend_model>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                </teaser>
+                <general translate="label" module="ffuenf_devtools">
+                    <label>General Configuration</label>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <enable translate="label" module="ffuenf_devtools">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable>
+                    </fields>
+                </general>
+                <backup translate="label" module="ffuenf_devtools">
+                    <label>Backup Configuration</label>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <dump_database_script_path translate="label" module="ffuenf_devtools">
+                            <label>Path to database_dump shell script</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dump_database_script_path>
+                    </fields>
+                </backup>
+                <magerun translate="label" module="ffuenf_devtools">
+                    <label>magerun</label>
+                    <sort_order>3000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <path translate="label" module="ffuenf_devtools">
+                            <label>Path to magerun</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </path>
+                    </fields>
+                </magerun>
+                <resaveproducts translate="label" module="ffuenf_devtools">
+                    <label>Resave Products Configuration</label>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <timeframefrom translate="label" module="ffuenf_devtools">
+                            <label>Timeframe for resaving products by the shell script (from)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ffuenf_devtools/adminhtml_system_config_date</frontend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timeframefrom>
+                        <timeframeto translate="label" module="ffuenf_devtools">
+                            <label>Timeframe for resaving products by the shell script (to)</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ffuenf_devtools/adminhtml_system_config_date</frontend_model>
+                            <sort_order>141</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </timeframeto>
+                    </fields>
+                </resaveproducts>
+                <headerbar translate="label" module="ffuenf_devtools">
+                    <label>Header Bar</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <enable translate="label" module="ffuenf_devtools">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable>
+                        <production_path translate="label" module="ffuenf_devtools">
+                            <label>Production URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>protocol less URL</comment>
+                        </production_path>
+                        <staging_path translate="label" module="ffuenf_devtools">
+                            <label>Staging URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>protocol less URL</comment>
+                        </staging_path>
+                        <development_path translate="label" module="ffuenf_devtools">
+                            <label>Development URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>protocol less URL</comment>
+                        </development_path>
+                        <branch translate="label" module="ffuenf_devtools">
+                            <label>Branch</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </branch>
+                        <commit translate="label" module="ffuenf_devtools">
+                            <label>Commit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </commit>
+                        <tag translate="label" module="ffuenf_devtools">
+                            <label>Tag</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tag>
+                    </fields>
+                </headerbar>
+                <linkmanager translate="label" module="ffuenf_devtools">
+                    <label>Linkmanager</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_top_links translate="label" module="ffuenf_devtools">
+                            <label>TopLinks</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_top_links>
+                        <top_links_my_account translate="label" module="ffuenf_devtools">
+                            <label>My Account</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </top_links_my_account>
+                        <top_links_my_wishlist translate="label" module="ffuenf_devtools">
+                            <label>My Wishlist</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </top_links_my_wishlist>
+                        <top_links_my_cart translate="label" module="ffuenf_devtools">
+                            <label>My Cart</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </top_links_my_cart>
+                        <top_links_checkout translate="label" module="ffuenf_devtools">
+                            <label>Checkout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </top_links_checkout>
+                        <top_links_login translate="label" module="ffuenf_devtools">
+                            <label>Login / Logout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </top_links_login>
+                        <heading_footer_links translate="label" module="ffuenf_devtools">
+                            <label>FooterLinks</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_footer_links>
+                        <footer_links_static_block_links translate="label" module="ffuenf_devtools">
+                            <label>Static Block Links</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[Enabling this option will remove the footer links defined in static block with identifier: footer_links.<br /> Ref: About Us | Customer Service | Privacy Policy]]></tooltip>
+                        </footer_links_static_block_links>
+                        <footer_links_sitemap translate="label" module="ffuenf_devtools">
+                            <label>Sitemap</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </footer_links_sitemap>
+                        <footer_links_search_terms translate="label" module="ffuenf_devtools">
+                            <label>Search Terms</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </footer_links_search_terms>
+                        <footer_links_advanced_search translate="label" module="ffuenf_devtools">
+                            <label>Advanced Search</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </footer_links_advanced_search>
+                        <footer_links_return_link translate="label" module="ffuenf_devtools">
+                            <label>Orders and Returns</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </footer_links_return_link>
+                        <footer_links_contact_us translate="label" module="ffuenf_devtools">
+                            <label>Contact Us</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </footer_links_contact_us>
+                        <footer_links_rss translate="label" module="ffuenf_devtools">
+                            <label>RSS</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[This will only work if you have enabled RSS option from:  System > Configuration > RSS Feeds > RSS Config]]></tooltip>
+                        </footer_links_rss>
+                        <heading_customer_navigation translate="label" module="ffuenf_devtools">
+                            <label>CustomerNavigationLinks</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_customer_navigation>
+                        <customer_navigation_account_dashboard translate="label" module="ffuenf_devtools">
+                            <label>Account Dashboard</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_account_dashboard>
+                        <customer_navigation_account_information translate="label" module="ffuenf_devtools">
+                            <label>Account Information</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_account_information>
+                        <customer_navigation_address_book translate="label" module="ffuenf_devtools">
+                            <label>Address Book</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_address_book>
+                        <customer_navigation_my_orders translate="label" module="ffuenf_devtools">
+                            <label>My Orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_orders>
+                        <customer_navigation_billing_agreements translate="label" module="ffuenf_devtools">
+                            <label>Billing Agreements</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_billing_agreements>
+                        <customer_navigation_recurring_profiles translate="label" module="ffuenf_devtools">
+                            <label>Recurring Profiles</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_recurring_profiles>
+                        <customer_navigation_my_product_reviews translate="label" module="ffuenf_devtools">
+                            <label>My Product Reviews</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_product_reviews>
+                        <customer_navigation_my_tags translate="label" module="ffuenf_devtools">
+                            <label>My Tags</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_tags>
+                        <customer_navigation_my_wishlist translate="label" module="ffuenf_devtools">
+                            <label>My Wishlist</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_wishlist>
+                        <customer_navigation_my_applications translate="label" module="ffuenf_devtools">
+                            <label>My Applications</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_applications>
+                        <customer_navigation_my_downloadable_products translate="label" module="ffuenf_devtools">
+                            <label>My Downloadable Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_my_downloadable_products>
+                        <customer_navigation_newsletter_subscriptions translate="label" module="ffuenf_devtools">
+                            <label>Newsletter Subscriptions</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_yesno</source_model>
+                            <sort_order>270</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_navigation_newsletter_subscriptions>
+                        <customer_navigation_logout translate="label" module="ffuenf_devtools">
+                            <label>Log Out</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ffuenf_devtools/system_config_source_noyes</source_model>
+                            <sort_order>280</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[Enabling this option will add 'Log Out' link at the bottom of Customer Navigation.]]></tooltip>
+                        </customer_navigation_logout>
+                        <heading_catalog_navigation translate="label" module="ffuenf_devtools">
+                            <label>CatalogNavigationLinks</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>290</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_catalog_navigation>
+                        <catalog_navigation_home_active translate="label" module="ffuenf_devtools">
+                            <label>Enable Homepage Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </catalog_navigation_home_active>
+                        <catalog_navigation_home_label translate="label" module="ffuenf_devtools">
+                            <label>Homepage Link Label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <catalog_navigation_home_active>1</catalog_navigation_home_active>
+                            </depends>
+                            <tooltip><![CDATA[If Label is left empty, 'Home' label will be used.]]></tooltip>
+                        </catalog_navigation_home_label>
+                    </fields>
+                </linkmanager>
+            </groups>
+        </ffuenf_devtools>
+    </sections>
+</config>

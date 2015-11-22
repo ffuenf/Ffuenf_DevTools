@@ -1,6 +1,7 @@
-app/code/local/Ffuenf/DevTools app/code/local/Ffuenf/DevTools
-app/etc/modules/Ffuenf_DevTools.xml app/etc/modules/Ffuenf_DevTools.xml
-app/design/adminhtml/default/default/layout/devtools.xml app/design/adminhtml/default/default/layout/devtools.xml
-app/design/adminhtml/default/default/template/devtools/ app/design/adminhtml/default/default/template/devtools/
-skin/adminhtml/default/default/headerbar.css skin/adminhtml/default/default/headerbar.css
-shell/resave-products.php shell/resave-products.php
+@import MageTrashApp
+app/code/community/Ffuenf/DevTools                        app/code/community/Ffuenf/DevTools
+app/etc/modules/Ffuenf_DevTools.xml                       app/etc/modules/Ffuenf_DevTools.xml
+app/design/adminhtml/default/default/layout/devtools.xml  app/design/adminhtml/default/default/layout/devtools.xml
+app/design/adminhtml/default/default/template/devtools/   app/design/adminhtml/default/default/template/devtools/
+skin/adminhtml/default/default/headerbar.css              skin/adminhtml/default/default/headerbar.css
+shell/resave-products.php                                 shell/resave-products.php

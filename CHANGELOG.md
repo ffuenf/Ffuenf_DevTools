@@ -2,6 +2,19 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.7 (Unreleased)
+
+## 2.1.6 (November 22, 2015)
+
+* add uninstallation via [Ffuenf_MageTrashApp](https://github.com/ffuenf/Ffuenf_MageTrashApp)
+
+## 2.1.5 (November 21, 2015)
+
+* add dependency to [Ffuenf_Common](https://github.com/ffuenf/Ffuenf_Common)
+* common extension structure
+* add more tests
+* add note about inherited extensions
+
 ## 2.1.4 (November 8, 2015)
 
 * switch back to official builds for versions > 1.9.0.0 in travis tests

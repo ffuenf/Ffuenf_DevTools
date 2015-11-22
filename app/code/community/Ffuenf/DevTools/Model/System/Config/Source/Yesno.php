@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
- * Ffuenf_DevTools extension
+ * Ffuenf_DevTools extension.
  *
  * NOTICE OF LICENSE
  *
@@ -15,14 +14,15 @@
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
-*/
--->
-<config>
-    <modules>
-        <Ffuenf_DevTools>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>Ffuenf_Common</depends>
-        </Ffuenf_DevTools>
-    </modules>
-</config>
+ */
+
+class Ffuenf_DevTools_Model_System_Config_Source_Yesno
+{
+    public function toOptionArray()
+    {
+        return array(
+            array('value' => 0, 'label'=>Mage::helper('ffuenf_devtools')->__('Enabled')),
+            array('value' => 1, 'label'=>Mage::helper('ffuenf_devtools')->__('Disabled')),
+        );
+    }
+}

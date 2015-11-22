@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
- * Ffuenf_DevTools extension
+ * Ffuenf_DevTools extension.
  *
  * NOTICE OF LICENSE
  *
@@ -15,14 +14,21 @@
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
  * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
-*/
--->
-<config>
-    <modules>
-        <Ffuenf_DevTools>
-            <active>true</active>
-            <codePool>community</codePool>
-            <depends>Ffuenf_Common</depends>
-        </Ffuenf_DevTools>
-    </modules>
-</config>
+ */
+
+class Ffuenf_DevTools_Test_Block_Adminhtml_System_Config_Date extends EcomDev_PHPUnit_Test_Case_Config
+{
+
+    /**
+     * Check if the block aliases are returning the correct class names
+     *
+     * @test
+     */
+    public function testBlockAliases()
+    {
+        $this->assertBlockAlias(
+            'ffuenf_devtools/adminhtml_system_config_date',
+            'Ffuenf_DevTools_Block_Adminhtml_System_Config_Date'
+        );
+    }
+}
