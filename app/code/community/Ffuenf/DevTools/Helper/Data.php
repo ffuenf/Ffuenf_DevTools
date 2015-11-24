@@ -23,6 +23,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH = 'ffuenf_devtools/backup/dump_database_script_path';
     const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMEFROM = 'ffuenf_devtools/resaveproducts/timeframefrom';
     const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETO = 'ffuenf_devtools/resaveproducts/timeframeto';
+    const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETYPE = 'ffuenf_devtools/resaveproducts/timeframetype';
     const CONFIG_EXTENSION_HEADERBAR_ACTIVE = 'ffuenf_devtools/headerbar/enable';
     const CONFIG_EXTENSION_HEADERBAR_BRANCH = 'ffuenf_devtools/headerbar/branch';
     const CONFIG_EXTENSION_HEADERBAR_COMMIT = 'ffuenf_devtools/headerbar/commit';
@@ -73,6 +74,12 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
      */
     protected $_sResaveProductsTimeframeTo;
 
+    /**
+     * Variable for the timeframe type of resaving products
+     *
+     * @var string
+     */
+    protected $_sResaveProductsTimeframeType;
 
     /**
      * Variable for the headerbar.
@@ -427,6 +434,17 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     public function getResaveProductsTimeframeTo()
     {
         return strtotime($this->getStoreConfig(self::CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETO, '_sResaveProductsTimeframeTo'));
+    }
+
+    /**
+     * Get timeframe type of resaving products.
+     *
+     * @throws Mage_Core_Exception
+     * @return string
+     */
+    public function getResaveProductsTimeframeType()
+    {
+        return $this->getStoreConfig(self::CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMETYPE, '_sResaveProductsTimeframeType');
     }
 
     public function isBirthday($birthdate)

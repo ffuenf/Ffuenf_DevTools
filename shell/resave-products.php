@@ -51,7 +51,7 @@ class Resave_Products extends Mage_Shell_Abstract
     
     public function run()
     {
-        $condition = 'created_at';
+        $condition = Mage::helper('ffuenf_devtools')->getResaveProductsTimeframeType();
         $collection = Mage::getResourceModel('catalog/product_collection')
         ->addFieldToFilter(
             $condition, array(

@@ -16,12 +16,16 @@
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-class Ffuenf_DevTools_Block_Adminhtml_System_Config_Date extends Mage_Adminhtml_Block_System_Config_Form_Field
+class Ffuenf_DevTools_Model_System_Config_Source_Datetype
 {
-    public function render(Varien_Data_Form_Element_Abstract $element)
+    const DATE_CREATED = 'created_at';
+    const DATE_UPDATED = 'updated_at';
+
+    public function toOptionArray()
     {
-        $element->setFormat(Varien_Date::DATE_INTERNAL_FORMAT);
-        $element->setImage($this->getSkinUrl('images/grid-cal.gif'));
-        return parent::render($element);
+        return array(
+            array('value' => self::DATE_CREATED, 'label' => 'Default - Created_At'),
+            array('value' => self::DATE_UPDATED, 'label' => 'Updated_At')
+        );
     }
 }
