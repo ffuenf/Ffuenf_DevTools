@@ -49,5 +49,4 @@ class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Ffuenf_DevTool
         }
         $this->_redirect('*/*/');
     }
-
 }

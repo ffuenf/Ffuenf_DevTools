@@ -24,9 +24,11 @@ class Ffuenf_DevTools_Block_Urlrewrite_Grid extends Mage_Adminhtml_Block_Urlrewr
         $this->setMassactionIdFilter('url_rewrite_id');
         $this->setMassactionIdFieldOnlyIndexValue(true);
         $this->getMassactionBlock()->setFormFieldName('url_rewrites');
-        $this->getMassactionBlock()->addItem('delete', array(
-            'label'=> Mage::helper('review')->__('Delete'),
-            'url'  => $this->getUrl(
+        $this->getMassactionBlock()->addItem(
+            'delete',
+            array(
+                'label'=> Mage::helper('review')->__('Delete'),
+                'url'  => $this->getUrl(
                 '*/*/massDelete',
                 array('ret' => Mage::registry('usePendingFilter') ? 'pending' : 'index')
             ),

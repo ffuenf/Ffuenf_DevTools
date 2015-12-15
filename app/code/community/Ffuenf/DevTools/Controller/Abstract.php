@@ -18,7 +18,6 @@
 
 class Ffuenf_DevTools_Controller_Abstract extends Mage_Adminhtml_Controller_Action
 {
-
     /**
      * check whether the current user is allowed to access this controller
      * @return bool

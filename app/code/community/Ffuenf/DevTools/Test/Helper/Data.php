@@ -91,3 +91,4 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
         );
     }
 }
+

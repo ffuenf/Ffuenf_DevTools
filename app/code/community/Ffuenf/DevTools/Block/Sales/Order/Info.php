@@ -33,7 +33,7 @@ class Ffuenf_DevTools_Block_Sales_Order_Info extends Mage_Sales_Block_Order_Info
      */
     public function removeLink($name)
     {
-        if(isset($this->_links[$name])){
+        if (isset($this->_links[$name])) {
             unset($this->_links[$name]);
         }
         return $this;

@@ -25,9 +25,8 @@ matrix:
 env:
   global:
   - APPNAME=Ffuenf_DevTools
-  - secure: SWnKotlTH/IjOFXh1s5TOrHfCVnJuSVtXdkM6sIkuPx3BB6GYsbz5MeJr0veByXQ+DbS+NrHWyJCy14BSYzzBQSc/5Bqckg82vabiVTzF++awaOnBUPntl2KHezauQNc/3vr37g2AMq+fKOhFM44xXcgxxjSKZv8EDKoxcSoIMw=
-  - secure: Sj1y5KsumYTl1dxvrerkTKs6koL3OiX+ZHQtRwK/vokcYlLNwKhgbbyJ5IK6U5coR9QxmH87qqk0bPgJityS/DWgRnsYlF2+tsbzvZS1g17N078w1WPV/PC1gpoq04SvM9s5y0ar0YlZCTJ4O+KcRjupzPbSZZ56MJ+GLirYIgA=
-  - secure: iIadbfM/ZvpeMQ5KhnMQqjS0AyznHOEt2lqAnVJvH5LnR2MMZUxHFpmHtOTROGhBCyKQy2RNw0Fu+9s3TETzLMyBmwTCikQplE2Gg6U5wPStxTVUKC++cZe3rRbQ3cFiaxAfUdCJ1jrRGKY+QHVeCVqC5UvUa5u1LbLsUSORL9c=
+  - secure: nhCg4z1BHuleaDp/V7sLiAWOwKBX+B55HiYzzU9V25nlbc3jDCXbAHu4m4zt/LrSeGDrnF+jIZgPMFxg03eyuvnner47t1ub0aY9tL8d7EiMB6Y9/QsbjXstmnQGr2ReP2YyeN/EWRST0CNODAXivdnTS5Vzq+XHlPlyccQ+JP0=
+  - secure: Pcsb+ORGxpTQeVnI2bdvQQ9UoDsKs/PT9xqBto2htDnRmaWvhKtFC5Whh0U+5iozMJON+tEm4Pz2kDSZvaboueWlkFLiJif7uWSPl2gljTwn3Sw1pFAb2tUFzIt+UJsot2wNpYHgI94vM4iJEaavYmyFtqKMceRmDZanH/NtdC4=
   matrix:
   - MAGENTO_VERSION=magento-ce-1.9.2.2
   - MAGENTO_VERSION=magento-ce-1.9.2.1
@@ -41,7 +40,8 @@ before_script:
 - composer self-update
 - composer install --prefer-source
 script:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh | bash
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh
+  | bash
 before_deploy:
 - gem install mime-types -v 2.6.2
 deploy:
@@ -54,7 +54,7 @@ deploy:
     branch: master
     tags: true
   api_key:
-    secure: UU31sL2D31nlqrQOqaMLm6oveBG/yaHFcpedcfcMG0bzzn5JOIk45YbksaXNCjcMMyOvlG5xJftSv9EAzjItKRdkLS3cpOwrF24r29jeQth8IiKDKl7FQYZTmmdoS7Zh+/t+JLZdj1wMiE48m/h15x0ykcuu70FTKpp/vHmupsA=
+    secure: F8ZESLTfEbOaBgVNpc23EEIXN4lBFeapaMfgoHdvdah7K1nMwXpXXvAN9oqc2uH0g740Dk2K5FUhjxBadcVjmKDtKwqy2E6YL9sqjzEWbpBv6Vets131+YIchr4mZv5srO2wRtxAA7GxoXsrmgFQa43u6zCyOsEVz3Xp6b/iUfE=
 notifications:
   slack:
-    secure: gLUTk/89G9Uk7SFIlz/SERfFqve2noCMOZ7d72q9ik5P6mDAo0cIGhyzkobhM41opR1YJPaBt7tpnhUppvR5AmX0LSTI84cjaFKSVECWIqkYX5jkkZDvgUZjnUt2CjflV32nNkKGPzFyuF0ysbsYkl/kj9SPNT/gHqXEeyAZhlw=
+    secure: Zx1rF2vKudUoRABd+tjk+pd9RHMLx3E8BZaTDJFuZyeQpUHW9dp7ktDHK4/C6yWMnaEAgGoI0J8TJ/mTnOmeDi1OXw7RteiR8gpaP5u8j8DsC4gqutqHyYKVeNUWatYgtoz2f8eSdpHkNPJlGi9Y7tJxFElgzksLlgBkzF4wE5M=

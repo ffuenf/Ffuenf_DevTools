@@ -16,7 +16,8 @@
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout {
+class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout
+{
     /**
     * Create layout blocks hierarchy from layout xml configuration
     *

@@ -18,7 +18,6 @@
 
 class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
 {
-
     const STATE_READY    = 0;
     const STATE_WAITING  = 1;
     const STATE_PROGRESS = 2;

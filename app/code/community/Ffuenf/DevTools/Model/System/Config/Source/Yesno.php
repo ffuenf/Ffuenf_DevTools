@@ -21,8 +21,8 @@ class Ffuenf_DevTools_Model_System_Config_Source_Yesno
     public function toOptionArray()
     {
         return array(
-            array('value' => 0, 'label'=>Mage::helper('ffuenf_devtools')->__('Enabled')),
-            array('value' => 1, 'label'=>Mage::helper('ffuenf_devtools')->__('Disabled')),
+            array('value' => 0, 'label' => Mage::helper('ffuenf_devtools')->__('Enabled')),
+            array('value' => 1, 'label' => Mage::helper('ffuenf_devtools')->__('Disabled')),
         );
     }
 }

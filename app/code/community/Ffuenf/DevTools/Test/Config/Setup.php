@@ -35,7 +35,10 @@ class Ffuenf_DevTools_Test_Config_Setup extends EcomDev_PHPUnit_Test_Case_Config
      */
     public function testSetupExists() {
         $this->assertSchemeSetupScriptVersions(
-            '1.0.0', $this->expected('module')->getVersion(), null, 'ffuenf_devtools_setup'
+            '1.0.0',
+            $this->expected('module')->getVersion(),
+            null,
+            'ffuenf_devtools_setup'
         );
     }
 }

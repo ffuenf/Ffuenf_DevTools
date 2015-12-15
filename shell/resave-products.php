@@ -82,6 +82,5 @@ class Resave_Products extends Mage_Shell_Abstract
     public function batchAfter()
     {}
 }
-
 $shell = new Resave_Products();
 $shell->run();
