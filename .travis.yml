@@ -1,16 +1,15 @@
 language: php
 sudo: false
 php:
-- 5.3
 - 5.4
 - 5.5
 - 5.6
 - 7.0
 matrix:
+  fast_finish: true
   allow_failures:
   - env: MAGENTO_VERSION=magento-ce-1.9.1.1
   - env: MAGENTO_VERSION=magento-ce-1.9.1.0
-  - php: 5.3
   - php: 5.4
     env: MAGENTO_VERSION=magento-ce-1.9.2.2
   - php: 5.4
@@ -21,7 +20,6 @@ matrix:
     env: MAGENTO_VERSION=magento-mirror-1.8.1.0
   - php: 7.0
     env: MAGENTO_VERSION=magento-mirror-1.8.1.0
-  fast_finish: true
 env:
   global:
   - APPNAME=Ffuenf_DevTools
@@ -29,10 +27,7 @@ env:
   - secure: Pcsb+ORGxpTQeVnI2bdvQQ9UoDsKs/PT9xqBto2htDnRmaWvhKtFC5Whh0U+5iozMJON+tEm4Pz2kDSZvaboueWlkFLiJif7uWSPl2gljTwn3Sw1pFAb2tUFzIt+UJsot2wNpYHgI94vM4iJEaavYmyFtqKMceRmDZanH/NtdC4=
   matrix:
   - MAGENTO_VERSION=magento-ce-1.9.2.2
-  - MAGENTO_VERSION=magento-ce-1.9.2.1
-  - MAGENTO_VERSION=magento-ce-1.9.2.0
   - MAGENTO_VERSION=magento-ce-1.9.1.1
-  - MAGENTO_VERSION=magento-ce-1.9.1.0
   - MAGENTO_VERSION=magento-mirror-1.8.1.0
   - MAGENTO_VERSION=magento-mirror-1.7.0.2
   - MAGENTO_VERSION=magento-mirror-1.6.2.0

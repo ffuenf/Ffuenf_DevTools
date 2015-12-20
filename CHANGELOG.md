@@ -2,12 +2,13 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
-## 2.1.7 (December 15, 2015)
+## 2.1.7 (December 20, 2015)
 
 * fix date input in backend configuration
 * add date type config for resave-products shell script (created_at / updated_at)
 * fix dependency to [Ffuenf_Common](https://github.com/ffuenf/Ffuenf_Common)
 * code-style
+* update travis build-matrix
 
 ## 2.1.6 (November 22, 2015)
 
