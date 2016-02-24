@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.8 (February 25, 2016)
+
+* update travis build-matrix
+* [docs] copyright notice
+
 ## 2.1.7 (December 20, 2015)
 
 * fix date input in backend configuration
