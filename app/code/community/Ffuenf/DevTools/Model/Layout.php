@@ -19,10 +19,10 @@
 class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout
 {
     /**
-    * Create layout blocks hierarchy from layout xml configuration
-    *
-    * @param Mage_Core_Layout_Element|null $parent
-    */
+     * Create layout blocks hierarchy from layout xml configuration
+     *
+     * @param Mage_Core_Layout_Element|null $parent
+     */
     public function generateBlocks($parent = null)
     {
         if (empty($parent)) {
@@ -42,12 +42,12 @@ class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout
     }
 
     /**
-    * Add block object to layout based on xml node data
-    *
-    * @param Varien_Simplexml_Element $node
-    * @param Varien_Simplexml_Element $parent
-    * @return Mage_Core_Model_Layout
-    */
+     * Add block object to layout based on xml node data
+     *
+     * @param Varien_Simplexml_Element $node
+     * @param Varien_Simplexml_Element $parent
+     * @return Mage_Core_Model_Layout
+     */
     protected function _generateBlock($node, $parent)
     {
         if (isset($node['ifconfig']) && ($configPath = (string)$node['ifconfig'])) {
@@ -64,10 +64,10 @@ class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout
     }
 
     /**
-    * @param Varien_Simplexml_Element $node
-    * @param Varien_Simplexml_Element $parent
-    * @return Mage_Core_Model_Layout
-    */
+     * @param Varien_Simplexml_Element $node
+     * @param Varien_Simplexml_Element $parent
+     * @return Mage_Core_Model_Layout
+     */
     protected function _generateAction($node, $parent)
     {
         if (isset($node['unlessconfig']) && ($configPath = (string)$node['unlessconfig'])) {

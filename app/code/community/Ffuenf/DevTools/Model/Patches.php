@@ -20,26 +20,26 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
 {
 
     /**
-    * Use to store applied patches.
-    *
-    * @var array
-    */
+     * Use to store applied patches.
+     *
+     * @var array
+     */
     public $appliedPatches = array();
 
     /**
-    * Use to hold location reference to  `applied.patches.list` file.
-    *
-    * @var string
-    */
+     * Use to hold location reference to  `applied.patches.list` file.
+     *
+     * @var string
+     */
     private $patchFile;
 
     /**
-    * Constructor
-    *
-    * Use to load the applied patches array.
-    *
-    * @return void
-    */
+     * Constructor
+     *
+     * Use to load the applied patches array.
+     *
+     * @return void
+     */
     protected function _construct()
     {
         $this->patchFile = Mage::getBaseDir('etc') . DS . 'applied.patches.list';
@@ -47,20 +47,20 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
     }
 
     /**
-    * Use to get patches.
-    *
-    * @return string
-    */
+     * Use to get patches.
+     *
+     * @return string
+     */
     public function getPatches()
     {
         return implode(', ', $this->appliedPatches);
     }
 
     /**
-    * Use to load the patches array with applied patches.
-    *
-    * @return void
-    */
+     * Use to load the patches array with applied patches.
+     *
+     * @return void
+     */
     protected function _loadPatchFile()
     {
         $ioAdapter = new Varien_Io_File();
