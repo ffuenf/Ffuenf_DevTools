@@ -49,7 +49,7 @@ class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
 
     protected function _getCollection()
     {
-        if (!$this->_collection){
+        if (!$this->_collection) {
             $this->_collection = Mage::getResourceModel('devtools/batch_collection');
             $this->_collection->init($this);
         }
@@ -64,7 +64,7 @@ class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
     
     protected function _generateData()
     {
-        foreach ($this->getCollection()->getData() as $data){
+        foreach ($this->getCollection()->getData() as $data) {
             $record = array();
             // step data: prepare your data
             $this->_resultData[] = $record;
@@ -73,7 +73,7 @@ class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
 
     protected function _afterGenerate()
     {
-        if ($this->getBatchStep() == 0){
+        if ($this->getBatchStep() == 0) {
             $this->setInfoCount(count($this->_resultData));
             $this->setInfoTotal($this->_collection->getCountItems());
         } else {
