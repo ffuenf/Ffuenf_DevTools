@@ -30,7 +30,7 @@ class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Ffuenf_DevTool
     {
         $this->loadLayout();
         $this->_setActiveMenu('devtools/backup');
-        $this->_addContent($this->getLayout()->createBlock('adminhtml/template')->setTemplate('devtools/backup.phtml'));
+        $this->_addContent($this->getLayout()->createBlock('adminhtml/template')->setTemplate('ffuenf/devtools/backup.phtml'));
         $this->renderLayout();
     }
 
@@ -48,5 +48,14 @@ class Ffuenf_DevTools_Adminhtml_DevTools_BackupController extends Ffuenf_DevTool
             Mage::getSingleton('core/session')->addError($helper->__('Could not open backup script.'));
         }
         $this->_redirect('*/*/');
+    }
+
+    /**
+     * check whether the current user is allowed to access this controller
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('ffuenf_devtools');
     }
 }

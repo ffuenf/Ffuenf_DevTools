@@ -30,7 +30,7 @@ class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools
     {
         $this->loadLayout();
         $this->_setActiveMenu('devtools/resave_products');
-        $this->_addContent($this->getLayout()->createBlock('adminhtml/template')->setTemplate('devtools/resave_products.phtml'));
+        $this->_addContent($this->getLayout()->createBlock('adminhtml/template')->setTemplate('ffuenf/devtools/resave_products.phtml'));
         $this->renderLayout();
     }
 

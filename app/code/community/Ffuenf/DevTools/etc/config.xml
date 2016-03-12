@@ -168,23 +168,6 @@
                 </observers>
             </adminhtml_block_html_before>
         </events>
-        <menu>
-            <system>
-                <children>
-                    <devtools module="ffuenf_devtools">
-                        <title>DevTools</title>
-                        <sort_order>0</sort_order>
-                        <children>
-                            <backup module="ffuenf_devtools">
-                                <title>Backup</title>
-                                <sort_order>0</sort_order>
-                                <action>adminhtml/devtools_backup</action>
-                            </backup>
-                        </children>
-                    </devtools>
-                </children>
-            </system>
-        </menu>
         <layout>
             <updates>
                 <ffuenf_devtools>

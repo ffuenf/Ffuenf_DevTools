@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.1.9 (March 12, 2016)
+
+* update travis / MageTestStand
+* [docs] minor updates
+* fix helper
+* re-organize menu / navigation
+* fix date input
+
 ## 2.1.8 (February 25, 2016)
 
 * update travis build-matrix
