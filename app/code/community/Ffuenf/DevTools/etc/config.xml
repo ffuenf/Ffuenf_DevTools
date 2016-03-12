@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_DevTools extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   Ffuenf
+ *
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<config>
+    <modules>
+        <Ffuenf_DevTools>
+            <version>2.1.9</version>
+        </Ffuenf_DevTools>
+    </modules>
+    <global>
+        <blocks>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Block</class>
+            </ffuenf_devtools>
+            <adminhtml>
+                <rewrite>
+                    <urlrewrite_grid>Ffuenf_Devtools_Block_Urlrewrite_Grid</urlrewrite_grid>
+                </rewrite>
+            </adminhtml>
+            <page>
+                <rewrite>
+                    <html_head>Ffuenf_Devtools_Block_Page_Html_Head</html_head>
+                </rewrite>
+            </page>
+            <customer>
+                <rewrite>
+                    <account_navigation>Ffuenf_Devtools_Block_Customer_Account_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+            <sales>
+                <rewrite>
+                    <order_info>Ffuenf_Devtools_Block_Sales_Order_Info</order_info>
+                </rewrite>
+            </sales>
+        </blocks>
+        <models>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Model</class>
+            </ffuenf_devtools>
+            <core>
+                <rewrite>
+                    <translate>Ffuenf_DevTools_Model_Translate</translate>
+                </rewrite>
+                <!--<rewrite>
+                    <email_template>Ffuenf_DevTools_Model_Email_Template</email_template>
+                </rewrite> -->
+                <rewrite>
+                    <layout>Ffuenf_DevTools_Model_Layout</layout>
+                </rewrite>
+            </core>
+        </models>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <ffuenf_devtools_observer>
+                        <class>ffuenf_devtools/observer</class>
+                        <method>overrideTheme</method>
+                    </ffuenf_devtools_observer>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+            <controller_action_layout_load_before>
+                <observers>
+                    <ffuenf_devtools_custom_handles>
+                        <class>ffuenf_devtools/customHandles</class>
+                        <method>addCustomHandles</method>
+                    </ffuenf_devtools_custom_handles>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+        <helpers>
+            <ffuenf_devtools>
+                <class>Ffuenf_DevTools_Helper</class>
+            </ffuenf_devtools>
+        </helpers>
+        <!-- add manufacturer to collection (https://www.atwix.com/magento/accessing-custom-attribute-at-checkout-or-cart/) -->
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </quote>
+            <order_invoice>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_invoice>
+            <order_shipment>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_shipment>
+            <order_creditmemo>
+                <item>
+                    <product_attributes>
+                        <manufacturer />
+                    </product_attributes>
+                </item>
+            </order_creditmemo>
+        </sales>
+        <resources>
+            <ffuenf_devtools_setup>
+                <setup>
+                    <module>Ffuenf_DevTools</module>
+                </setup>
+            </ffuenf_devtools_setup>
+        </resources>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <ffuenf_devtools_customhandles>
+                        <class>ffuenf_devtools/customhandles</class>
+                        <method>addCustomHandles</method>
+                    </ffuenf_devtools_customhandles>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+        <layout>
+            <updates>
+                <ffuenf_devtools>
+                    <file>ffuenf_devtools.xml</file>
+                </ffuenf_devtools>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <devtools after="Mage_Adminhtml">Ffuenf_DevTools_Adminhtml</devtools>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <ffuenf_devtools_headerbar>
+                        <class>ffuenf_devtools/observer</class>
+                        <method>setBodyClass</method>
+                    </ffuenf_devtools_headerbar>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
+        <layout>
+            <updates>
+                <ffuenf_devtools>
+                    <file>ffuenf_devtools.xml</file>
+                </ffuenf_devtools>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <ffuenf_devtools>
+            <general>
+                <enable>0</enable>
+            </general>
+            <backup>
+                <dump_database_script_path></dump_database_script_path>
+            </backup>
+            <magerun>
+                <path>../tools/n98-magerun.phar</path>
+            </magerun>
+            <resaveproducts>
+                <timeframefrom></timeframefrom>
+                <timeframeto></timeframeto>
+            </resaveproducts>
+            <headerbar>
+                <enable>0</enable>
+                <production_path></production_path>
+                <staging_path></staging_path>
+                <development_path></development_path>
+                <branch></branch>
+                <commit></commit>
+                <tag></tag>
+            </headerbar>
+            <linkmanager>
+                <top_links_my_account>0</top_links_my_account>
+                <top_links_my_wishlist>0</top_links_my_wishlist>
+                <top_links_my_cart>0</top_links_my_cart>
+                <top_links_checkout>0</top_links_checkout>
+                <top_links_login>0</top_links_login>
+                <footer_links_static_block_links>0</footer_links_static_block_links>
+                <footer_links_sitemap>0</footer_links_sitemap>
+                <footer_links_search_terms>0</footer_links_search_terms>
+                <footer_links_advanced_search>0</footer_links_advanced_search>
+                <footer_links_contact_us>0</footer_links_contact_us>
+                <customer_navigation_account_dashboard>0</customer_navigation_account_dashboard>
+                <customer_navigation_account_information>0</customer_navigation_account_information>
+                <customer_navigation_address_book>0</customer_navigation_address_book>
+                <customer_navigation_my_orders>0</customer_navigation_my_orders>
+                <customer_navigation_billing_agreements>0</customer_navigation_billing_agreements>
+                <customer_navigation_recurring_profiles>0</customer_navigation_recurring_profiles>
+                <customer_navigation_my_product_reviews>0</customer_navigation_my_product_reviews>
+                <customer_navigation_my_tags>0</customer_navigation_my_tags>
+                <customer_navigation_my_wishlist>0</customer_navigation_my_wishlist>
+                <customer_navigation_my_applications>0</customer_navigation_my_applications>
+                <customer_navigation_my_downloadable_products>0</customer_navigation_my_downloadable_products>
+                <customer_navigation_newsletter_subscriptions>0</customer_navigation_newsletter_subscriptions>
+                <customer_navigation_logout>0</customer_navigation_logout>
+                <customer_navigation_store_credit>0</customer_navigation_store_credit>
+                <customer_navigation_gift_card>0</customer_navigation_gift_card>
+                <customer_navigation_gift_registry>0</customer_navigation_gift_registry>
+                <customer_navigation_reward_points>0</customer_navigation_reward_points>
+                <customer_navigation_my_invitations>0</customer_navigation_my_invitations>
+                <catalog_navigation_home_active>0</catalog_navigation_home_active>
+                <catalog_navigation_home_label>Home</catalog_navigation_home_label>
+            </linkmanager>
+        </ffuenf_devtools>
+    </default>
+    <uninstall>
+        <filename>uninstall.txt</filename>
+    </uninstall>
+    <phpunit>
+        <suite>
+            <modules>
+                <Ffuenf_DevTools/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>

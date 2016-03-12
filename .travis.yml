@@ -1,33 +1,52 @@
 language: php
 sudo: false
+cache:
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.cache/bin"
+  - "$HOME/.n98-magerun/modules"
+  - "$HOME/.cache/magento"
 php:
-- 5.3
-- 5.4
 - 5.5
 - 5.6
 - 7.0
 matrix:
+  fast_finish: true
   allow_failures:
-  - php: 5.3
-  - php: 5.4
   - php: 5.6
+    env: MAGENTO_VERSION=ce-1.8.1.0
   - php: 7.0
+    env: MAGENTO_VERSION=ce-1.8.1.0
 env:
-  matrix:
-  - MAGENTO_VERSION=magento-ce-1.9.2.2
-  - MAGENTO_VERSION=magento-ce-1.9.2.1
-  - MAGENTO_VERSION=magento-ce-1.9.2.0
-  - MAGENTO_VERSION=magento-ce-1.9.1.0
-  - MAGENTO_VERSION=magento-mirror-1.8.1.0
-  - MAGENTO_VERSION=magento-mirror-1.7.0.2
-  - MAGENTO_VERSION=magento-mirror-1.6.2.0
   global:
-  - secure: l/ujJqNgSCzkoR7tHNzw5uv5psXhbgWeTUU3CutjtQlDJ8dLODwKCZq/opppDIBwdQhNOuDAdj9F+jSzfq4F52chCM4wb+2oH+eOxOtmUrd0lJU/ePFuQi17UJAIy7qif6ofMtRCdui+IYPpenEoxP/JrMcNAhuRpiOeJ74b1yU=
-  - secure: azhyY7cLNKo37i4Ow5SEUpK2Icl3CE3E9SlzvCxLPDRXRfigoyPz+zonkIoazqgDM78w4XApuJBDC50rWrA0jAUVde5flzbeH5hW0+NnkAQHLZ3L8wUqNAA2TBQjOzm8fMEvvtBud2Z/ReSMVHTfJDgxJRQdgX3ScImfkUxxb1k=
-  - secure: LibFvqogc8g8vmbt1JRAr/dyDhEUeIWVKCV5JYVLWUMx5ixTgw4UoISby0THgoMHejiqCFNDH6V1N4mUPZ2RqH7eiwbiQ8F2oUoMXehpwLiBrJLgXl8PCMFWi6oh9M/qa3mVX8K0TzRe5OEI26TlLYIG46d+I4LcYevilFHRYPs=
-script:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/setup.sh
+  - APPNAME=Ffuenf_DevTools
+  - secure: jTkSEu95OLDcpqixmQaVCO6P+R05VioKD8TvhkwonNHoZEXcoAjnLevL1r130DALZzmYLHueW04NJUSgHfB1OsAg/A0XOqckxbMEXfiMH6yE6fnh3cs8dUn/RXFCZpkASOVJiglaKUhs89wEo+pr2g//q/XDNo7GuO+wu61oJg4=
+  - secure: XY9N4BFvWU37oJnQLtodrtFtIiOctDCX7EDBzCD+tqChCOIylAKPT9L5Zx4FJAqE17mVFXuoWkgfe8gQl4NZimnHMyxr11Q9nv/AAPSTeb2JM3YwIQPijtIpSEAA80LdfSuwHKK6tgX39Z/Y/dwjDZIYf4CRdILbNP2f2cJGUyo=
+  - secure: ouroGLFoK91JM6O+mVHQ8gf4hPRqfdpB1izd3xAZqzlGTSG/8P5ZhjSqQwasGrmo2m53LHwFOXl7PJpBdR/+VXMLSsl37VDquLJSFvepz+yFQFK6uW/fBbXF0Ph47xAV24SeWlqWlKM95NRX0rg2XL4LHaEsgFco91p3jUlNHS4=
+  matrix:
+  - MAGENTO_VERSION=ce-1.9.2.4
+  - MAGENTO_VERSION=ce-1.9.1.1
+  - MAGENTO_VERSION=ce-1.8.1.0
+  - MAGENTO_VERSION=ce-1.7.0.2
+  - MAGENTO_VERSION=ce-1.6.2.0
+before_install:
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/before_install.sh
   | bash
+script:
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/script.sh
+  | bash
+deploy:
+  provider: releases
+  file:
+  - "${APPNAME}-${TRAVIS_TAG}.zip"
+  - "${APPNAME}-${TRAVIS_TAG}.tar.gz"
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
+  api_key:
+    secure: OsRWUIBZWnRoFw7eucLpDzIGsSCdv0c2lxp9lYWQ8HEGEBuTjkZB4NNWtzkax5bD7OKfBVPKuc6LFJk3eBbV6KmKyfCvOGQ7/s5D7I75klXGv1weJgYOmmwT5FUcgh1YwXfVEYexx7NIVj6Ralem3TmF+mQGGc67aNfDcQ4LGhA=
 notifications:
   slack:
-    secure: dxvrDX8UWT8iNrhfpHYOYyzGqXT2+ZhVQ8L1UlBQfPUm8AXa304Ms/RaXtSQKfqEt6G1PpRmfanEtE57u7mWGWefCDsCHpANo8gfffJkEmUSixFkR51eMQPbhPlKCyn/KdLmnX8rAsAK4v44JrIH3vAhXL4yF/MFlVwbxtWkQvs=
+    secure: G8TNLuy7KaZHCo3Q0Y/4mTeoon78bDKNGhwgeD7q0Kx+HDAs/EbCXK1fjn0nZlrvb2HPrlkMJ4s1Y02cgfopFzcTeNTbDp2G3Ioo8Qc0zDlvOKF24YdFhY3wfweZKn1YI4o1lzu2dbiCZabxnHV3eANoQ0iv20izGrWHOioIu6A=

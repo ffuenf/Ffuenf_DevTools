@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ffuenf_DevTools extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   Ffuenf
+ * @package    Ffuenf_DevTools
+ * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
+ * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @license    http://opensource.org/licenses/mit-license.php MIT License
+*/
+-->
+<layout>
+    <default>
+        <reference name="before_body_end">
+            <block type="core/template" template="ffuenf/devtools/appliedpatches.phtml" name="ffuenf.applied.patches"/>
+            <block after="-" type="ffuenf_devtools/adminhtml_headerbar" name="ffuenf.headerbar" ifconfig="ffuenf_devtools/headerbar/enable"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss" ifconfig="ffuenf_devtools/headerbar/enable">
+                <name>headerbar.css</name>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_devtools_batch_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>ffuenf/devtools/main.css</name>
+            </action>
+            <action method="addJs">
+                <name>ffuenf/devtools/batch.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="ffuenf_devtools/adminhtml_popup" template="ffuenf/devtools/popup.phtml" name="batch_overlay" />
+        </reference>
+    </adminhtml_devtools_batch_index>
+</layout>

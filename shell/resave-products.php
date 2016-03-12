@@ -13,7 +13,7 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2015 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -51,7 +51,7 @@ class Resave_Products extends Mage_Shell_Abstract
     
     public function run()
     {
-        $condition = 'created_at';
+        $condition = Mage::helper('ffuenf_devtools')->getResaveProductsTimeframeType();
         $collection = Mage::getResourceModel('catalog/product_collection')
         ->addFieldToFilter(
             $condition, array(
@@ -75,13 +75,12 @@ class Resave_Products extends Mage_Shell_Abstract
     {
         $product = Mage::getModel('catalog/product')->load($item->getId());
         $product->setIsChanged(true);
-        echo $product->getId()."\r\n";
+        echo $product->getId() . "\r\n";
         $product->save();
     }
 
     public function batchAfter()
     {}
 }
-
 $shell = new Resave_Products();
 $shell->run();

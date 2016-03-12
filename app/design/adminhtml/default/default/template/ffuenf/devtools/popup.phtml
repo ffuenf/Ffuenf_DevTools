@@ -1,0 +1,33 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+* @package Amasty_Feed
+*/
+?>
+<div class="batch_overlay" id="batch_overlay" style="display: none;">
+    &nbsp;
+</div>
+<div class="batch_popup" id="batch_popup" style="display: none;">
+    <h1><?php echo Mage::helper('ffuenf_devtools')->__('Progress')?></h1>
+    <span class="close"><a href="#" onclick="batch_object.close();"><?php echo Mage::helper('ffuenf_devtools')->__('Close')?></a></span>
+    <div class="batch_popup_log">
+        <ul id="batch_popup_log">
+        </ul>
+    </div>
+    <div class="batch_popup_progress_container">
+        <div class="batch_popup_progress" id="batch_popup_progress">
+            &nbsp;
+        </div>
+    </div>
+    <div class="batch_popup_result">
+        <?php echo Mage::helper('ffuenf_devtools')->__('Download the file:')?><span id="batch_popup_result"></span>		
+    </div>
+</div>
+<script type="text/javascript">
+    var batch_object = new batch();
+    var url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/devtools_batch/run'); ?>';
+    var stopUrl = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/devtools_batch/stop'); ?>';
+    batch_object.url = url;
+    batch_object.stopUrl = stopUrl;
+</script>

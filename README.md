@@ -1,30 +1,40 @@
+<a href="http://www.ffuenf.de" title="ffuenf - code • design • e-commerce"><img src="https://github.com/ffuenf/Ffuenf_Common/blob/master/skin/adminhtml/default/default/ffuenf/ffuenf.png" alt="ffuenf - code • design • e-commerce" /></a>
+
 Ffuenf_DevTools
 ===============
 [![GitHub tag](https://img.shields.io/github/tag/ffuenf/Ffuenf_DevTools.svg)][tag]
 [![Build Status](https://img.shields.io/travis/ffuenf/Ffuenf_DevTools.svg)][travis]
 [![Code Quality](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools/badges/quality-score.png)][code_quality]
 [![Code Coverage](https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools/badges/coverage.png)][code_coverage]
-[![Code Climate](https://codeclimate.com/github/ffuenf/Ffuenf_DevTools/badges/gpa.svg)][codeclimate_gpa]
 [![PayPal Donate](https://img.shields.io/badge/paypal-donate-blue.svg)][paypal_donate]
-
 [tag]: https://github.com/ffuenf/Ffuenf_DevTools
 [travis]: https://travis-ci.org/ffuenf/Ffuenf_DevTools
 [code_quality]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools
 [code_coverage]: https://scrutinizer-ci.com/g/ffuenf/Ffuenf_DevTools
-[codeclimate_gpa]: https://codeclimate.com/github/ffuenf/Ffuenf_DevTools
 [paypal_donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J2PQS2WLT2Y8W&item_name=Magento%20Extension%3a%20Ffuenf_DevTools&item_number=Ffuenf_DevTools&currency_code=EUR
 
 This is a extension for Magento Community Edition that adds access to commonly used development tasks in the backend.
+
+Replacements
+------------
+
+This extension inherits the functionality of the following extensions:
+
+* [N98_LayoutHelper](https://github.com/netz98/N98_LayoutHelper)
+* [N98_CustomLayoutHandles](https://github.com/netz98/N98_CustomLayoutHandles)
+* [Aoe_LayoutConditions](https://github.com/AOEpeople/Aoe_LayoutConditions)
+* [MagePsycho_Xmllinks](https://github.com/MagePsycho/MagePsycho_Xmllinks)
+* [MageMechanic_PhpSeven](https://github.com/MageMechanic/PhpSeven)
+* [Philwinkle_AppliedPatches](https://github.com/philwinkle/Philwinkle_AppliedPatches)
+* [Yireo_EmailOverride](https://github.com/yireo/Yireo_EmailOverride)
 
 Platform
 --------
 
 The following versions are supported and tested:
 
-* Magento Community Edition 1.9.2.2
-* Magento Community Edition 1.9.2.1
-* Magento Community Edition 1.9.2.0
-* Magento Community Edition 1.9.1.0
+* Magento Community Edition 1.9.2.4
+* Magento Community Edition 1.9.1.1
 * Magento Community Edition 1.8.1.0
 * Magento Community Edition 1.7.0.2
 * Magento Community Edition 1.6.2.0
@@ -34,14 +44,15 @@ Other versions are assumed to work.
 Requirements
 ------------
 
-|                                                                     | PHP 5.3        | PHP 5.4        | PHP 5.5         | PHP 5.6       | PHP 7.0       |
-| ------------------------------------------------------------------- | -------------- | -------------- | --------------- | ------------- | ------------- |
-| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | EOL            | EOL            | STABLE          | **STABLE**        | RC            |
-| automated tests on [travis]                                         | allow failure  | allow failure  | **required pass** | allow failure | allow failure |
+|                                                                     | PHP 5.5           | PHP 5.6           | PHP 7.0           |
+| ------------------------------------------------------------------- | ----------------- | ----------------- | ----------------- |
+| [EOL](https://secure.php.net/supported-versions.php) / STABLE / RC  | STABLE            | **STABLE**        | **STABLE**        |
+| automated tests on [travis]                                         | **required pass** | **required pass** | **required pass** |
 
 Magento Community Edition officially supports PHP 5.4 and PHP 5.5.
 
 Non-official compatibility to PHP 5.6 may be reached by following the tips on [Use of iconv.internal_encoding is deprecated](https://magento.stackexchange.com/questions/34015/magento-1-9-php-5-6-use-of-iconv-internal-encoding-is-deprecated).
+Non-official compatibility to PHP 7.0 may be reached by using [Inchoo_PHP7](https://github.com/Inchoo/Inchoo_PHP7).
 
 Installation
 ------------
@@ -49,17 +60,27 @@ Installation
 Use [modman](https://github.com/colinmollenhour/modman) to install:
 ```
 modman init
+modman clone https://github.com/ffuenf/Ffuenf_Common
 modman clone https://github.com/ffuenf/Ffuenf_DevTools
 ```
 
 Deinstallation
 --------------
 
+#### via [Ffuenf_MageTrashApp](https://github.com/ffuenf/Ffuenf_MageTrashApp)
+
+An additional module called [Ffuenf_MageTrashApp](https://github.com/ffuenf/Ffuenf_MageTrashApp) has been installed to help you to uninstall this extension in a clean way.
+If it is not yet installed, please install it from [Ffuenf_MageTrashApp](https://github.com/ffuenf/Ffuenf_MageTrashApp)
+If it is installed, go to your backend menu System > Configuration > Advanced > MageTrashApp, then click on the tab "Extension Installed", select the drop down option "Uninstall" of this extension and press "Save Config" button to uninstall
+If you use this extension, you don't need to make any queries in your database as explained below in case of manually uninstallation.
+
+#### via [modman](https://github.com/colinmollenhour/modman)
+
 Use [modman](https://github.com/colinmollenhour/modman) to clear all files and symlinks:
 ```
 modman clean Ffuenf_DevTools
 ```
-see `uninstall.sql` to clear all entries of this extension from your database.
+see `sql/ffuenf_devtools_setup/uninstall.sql` to clear all entries of this extension from your database.
 
 Development
 -----------
@@ -80,7 +101,7 @@ License and Author
 ------------------
 
 - Author:: Achim Rosenhagen (<a.rosenhagen@ffuenf.de>)
-- Copyright:: 2015, ffuenf
+- Copyright:: 2016, ffuenf
 
 The MIT License (MIT)
 
