@@ -232,7 +232,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     {
         $paths = array();
         $design = $this->getDesign($store);
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.$design['theme'].DS.'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . $design['theme'].DS.'locale';
         // Check for fallback support
         if ($this->supportsDesignFallback()) {
             $fallbackModel = Mage::getModel('core/design_fallback');
@@ -240,15 +240,17 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
                 $fallbackSchemes = $fallbackModel->getFallbackScheme('frontend', $design['package'], $design['theme']);
                 if (!empty($fallbackSchemes)) {
                     foreach ($fallbackSchemes as $scheme) {
-                        if (!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
-                        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
+                        if (!isset($scheme['_package']) || !isset($scheme['_theme'])) {
+                            continue;
+                        }
+                        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $scheme['_package'] . DS . $scheme['_theme'] . DS . 'locale';
                     }
                 }
             }
         }
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$design['package'].DS.'default'.DS.'locale';
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'default'.DS.'default'.DS.'locale';
-        $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.'base'.DS.'default'.DS.'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . $design['package'] . DS . 'default' . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'default' . DS . 'default' . DS . 'locale';
+        $paths[] = Mage::getBaseDir('design') . DS . 'frontend' . DS . 'base' . DS . 'default' . DS . 'locale';
         $paths[] = Mage::getBaseDir('locale');
         return $paths;
     }
@@ -287,8 +289,12 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
         if (empty($theme)) {
             $theme = Mage::getStoreConfig('design/theme/default', $store);
         }
-        if (empty($packageName)) $packageName = 'default';
-        if (empty($theme)) $theme = 'default';
+        if (empty($packageName)) {
+            $packageName = 'default';
+        }
+        if (empty($theme)) {
+            $theme = 'default';
+        }
         return array(
             'package' => $packageName,
             'theme' => $theme,
@@ -410,10 +416,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     public function supportsDesignFallback()
     {
         // Check for the right file
-        if (file_exists(BP . '/app/code/core/Mage/Core/Model/Design/Fallback.php') === false) {
-            return false;
-        }
-        return true;
+        return !(file_exists(BP . '/app/code/core/Mage/Core/Model/Design/Fallback.php') === false);
     }
     
     /**

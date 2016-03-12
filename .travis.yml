@@ -3,10 +3,10 @@ sudo: false
 cache:
   apt: true
   directories:
-    - $HOME/.composer/cache
-    - $HOME/.cache/bin
-    - $HOME/.n98-magerun/modules
-    - $HOME/.cache/magento
+  - "$HOME/.composer/cache"
+  - "$HOME/.cache/bin"
+  - "$HOME/.n98-magerun/modules"
+  - "$HOME/.cache/magento"
 php:
 - 5.5
 - 5.6
@@ -21,8 +21,9 @@ matrix:
 env:
   global:
   - APPNAME=Ffuenf_DevTools
-  - secure: nhCg4z1BHuleaDp/V7sLiAWOwKBX+B55HiYzzU9V25nlbc3jDCXbAHu4m4zt/LrSeGDrnF+jIZgPMFxg03eyuvnner47t1ub0aY9tL8d7EiMB6Y9/QsbjXstmnQGr2ReP2YyeN/EWRST0CNODAXivdnTS5Vzq+XHlPlyccQ+JP0=
-  - secure: Pcsb+ORGxpTQeVnI2bdvQQ9UoDsKs/PT9xqBto2htDnRmaWvhKtFC5Whh0U+5iozMJON+tEm4Pz2kDSZvaboueWlkFLiJif7uWSPl2gljTwn3Sw1pFAb2tUFzIt+UJsot2wNpYHgI94vM4iJEaavYmyFtqKMceRmDZanH/NtdC4=
+  - secure: jTkSEu95OLDcpqixmQaVCO6P+R05VioKD8TvhkwonNHoZEXcoAjnLevL1r130DALZzmYLHueW04NJUSgHfB1OsAg/A0XOqckxbMEXfiMH6yE6fnh3cs8dUn/RXFCZpkASOVJiglaKUhs89wEo+pr2g//q/XDNo7GuO+wu61oJg4=
+  - secure: XY9N4BFvWU37oJnQLtodrtFtIiOctDCX7EDBzCD+tqChCOIylAKPT9L5Zx4FJAqE17mVFXuoWkgfe8gQl4NZimnHMyxr11Q9nv/AAPSTeb2JM3YwIQPijtIpSEAA80LdfSuwHKK6tgX39Z/Y/dwjDZIYf4CRdILbNP2f2cJGUyo=
+  - secure: ouroGLFoK91JM6O+mVHQ8gf4hPRqfdpB1izd3xAZqzlGTSG/8P5ZhjSqQwasGrmo2m53LHwFOXl7PJpBdR/+VXMLSsl37VDquLJSFvepz+yFQFK6uW/fBbXF0Ph47xAV24SeWlqWlKM95NRX0rg2XL4LHaEsgFco91p3jUlNHS4=
   matrix:
   - MAGENTO_VERSION=ce-1.9.2.4
   - MAGENTO_VERSION=ce-1.9.1.1
@@ -45,7 +46,7 @@ deploy:
     branch: master
     tags: true
   api_key:
-    secure: F8ZESLTfEbOaBgVNpc23EEIXN4lBFeapaMfgoHdvdah7K1nMwXpXXvAN9oqc2uH0g740Dk2K5FUhjxBadcVjmKDtKwqy2E6YL9sqjzEWbpBv6Vets131+YIchr4mZv5srO2wRtxAA7GxoXsrmgFQa43u6zCyOsEVz3Xp6b/iUfE=
+    secure: OsRWUIBZWnRoFw7eucLpDzIGsSCdv0c2lxp9lYWQ8HEGEBuTjkZB4NNWtzkax5bD7OKfBVPKuc6LFJk3eBbV6KmKyfCvOGQ7/s5D7I75klXGv1weJgYOmmwT5FUcgh1YwXfVEYexx7NIVj6Ralem3TmF+mQGGc67aNfDcQ4LGhA=
 notifications:
   slack:
-    secure: Zx1rF2vKudUoRABd+tjk+pd9RHMLx3E8BZaTDJFuZyeQpUHW9dp7ktDHK4/C6yWMnaEAgGoI0J8TJ/mTnOmeDi1OXw7RteiR8gpaP5u8j8DsC4gqutqHyYKVeNUWatYgtoz2f8eSdpHkNPJlGi9Y7tJxFElgzksLlgBkzF4wE5M=
+    secure: G8TNLuy7KaZHCo3Q0Y/4mTeoon78bDKNGhwgeD7q0Kx+HDAs/EbCXK1fjn0nZlrvb2HPrlkMJ4s1Y02cgfopFzcTeNTbDp2G3Ioo8Qc0zDlvOKF24YdFhY3wfweZKn1YI4o1lzu2dbiCZabxnHV3eANoQ0iv20izGrWHOioIu6A=

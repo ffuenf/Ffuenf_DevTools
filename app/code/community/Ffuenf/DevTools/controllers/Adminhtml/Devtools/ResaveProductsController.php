@@ -36,18 +36,18 @@ class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools
 
     public function runAction()
     {
-        $total          = 0;
-        $cnt            = 0;
-        $message        = '';
-        $isCompleted    = false;
-        $id             = $this->getRequest()->getParam('batchId');
+        $total       = 0;
+        $cnt         = 0;
+        $message     = '';
+        $isCompleted = false;
+        $id          = $this->getRequest()->getParam('batchId');
         
         $batch = Mage::getModel('devtools/batch')->load($id);
         if ($batch->getId()) {
             try {
                 $hasGenerated = $batch->generate();
-                $cnt = $batch->getInfoCnt();
-                $total = $batch->getInfoTotal();
+                $cnt          = $batch->getInfoCnt();
+                $total        = $batch->getInfoTotal();
                 if ($hasGenerated) {
                     $message = $this->__('The batch has been processed');
                     $isCompleted = true;
