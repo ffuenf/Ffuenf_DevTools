@@ -18,6 +18,9 @@
 
 class Ffuenf_DevTools_Block_Adminhtml_Popup extends Mage_Adminhtml_Block_Template
 {
+    /*
+     * @return Mage_Core_Block_Abstract
+     */
     public function _prepareLayout()
     {
         return parent::_prepareLayout();

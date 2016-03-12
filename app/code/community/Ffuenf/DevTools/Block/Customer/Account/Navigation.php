@@ -33,7 +33,7 @@ class Ffuenf_DevTools_Block_Customer_Account_Navigation extends Mage_Customer_Bl
      * @param string $name Name of the link
      * @return \Ffuenf_DevTools_Block_Customer_Account_Navigation
      */
-    function removeLink($name)
+    public function removeLink($name)
     {
         unset($this->_links[$name]);
         return $this;

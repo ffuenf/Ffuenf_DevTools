@@ -32,9 +32,12 @@ class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
         $this->_init('ffuenf_devtools/batch');
     }
 
+    /*
+     * @return integer
+     */
     protected function _getStepSize()
     {
-        $batchSize = Mage::getStoreConfig('ffuenf_devtools/batch/batch_size');
+        $batchSize = (int)Mage::getStoreConfig('ffuenf_devtools/batch/batch_size');
         return $batchSize ? $batchSize : $this->_stepSize;
     }
 
@@ -47,6 +50,9 @@ class Ffuenf_DevTools_Model_Batch extends Mage_Core_Model_Abstract
         }
     }
 
+    /*
+     * @return Ffuenf_DevTools_Model_Batch_Collection
+     */
     protected function _getCollection()
     {
         if (!$this->_collection) {

@@ -55,7 +55,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
         }
         parent::addItem($type, $name, $params, $if, $cond);
         // that is the standard behaviour
-        if ($referenceName == '*' && $before == false) {
+        if ($referenceName == '*' && $before === false) {
             return $this;
         }
         $this->_sortItems($referenceName, $before, $type);

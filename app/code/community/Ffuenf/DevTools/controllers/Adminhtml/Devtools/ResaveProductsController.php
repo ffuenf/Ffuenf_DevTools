@@ -72,8 +72,6 @@ class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools
         } else {
             $total = 0;
             $cnt = 0;
-            $file = '';
-            $fileName = '';
             $isCompleted = true;
             $message = $this->__('Please provide a valid batch ID.');
         }
@@ -94,7 +92,6 @@ class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools
     public function stopAction()
     {
         $id = $this->getRequest()->getParam('batchId');
-        $error = $this->getRequest()->getParam('error');
         $batch = Mage::getModel('devtools/batch')->load($id);
         $batch->setStatus(Ffuenf_DevTools_Model_Batch::STATE_READY);
         $batch->save();

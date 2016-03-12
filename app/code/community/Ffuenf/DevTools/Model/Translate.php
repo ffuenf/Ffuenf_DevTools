@@ -64,7 +64,7 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
      * Loading data from module translation files
      *
      * @param string $moduleName
-     * @param string $files
+     * @param array $files
      * @param bool   $forceReload (optional)
      *
      * @return Ffuenf_DevTools_Model_Translate
@@ -120,7 +120,7 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
      *
      * @param string $file
      * @param string $type
-     * @param string $localeCode
+     * @param string|null $localeCode
      * @return string
      */
     public function getTemplateFile($file, $type, $localeCode = null)

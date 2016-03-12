@@ -410,7 +410,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     public function supportsDesignFallback()
     {
         // Check for the right file
-        if (file_exists(BP . '/app/code/core/Mage/Core/Model/Design/Fallback.php') == false) {
+        if (file_exists(BP . '/app/code/core/Mage/Core/Model/Design/Fallback.php') === false) {
             return false;
         }
         return true;
