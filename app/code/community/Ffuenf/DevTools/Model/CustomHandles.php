@@ -76,7 +76,7 @@ class Ffuenf_DevTools_Model_CustomHandles
         $customerHelper = Mage::helper('customer');
         $currentCustomer = $customerHelper->getCurrentCustomer();
         if ($groupId = $currentCustomer->getGroupId()) {
-            $customerGroup = Mage::getModel('customer/group')->load($groupId );
+            $customerGroup = Mage::getModel('customer/group')->load($groupId);
             $groupCode = strtolower(preg_replace("/[^-a-zA-Z0-9]+/", "", $customerGroup->getCode()));
             $updateManager->addHandle("customer_group_{$groupCode}");
         }
@@ -210,7 +210,7 @@ class Ffuenf_DevTools_Model_CustomHandles
         $storeCode = Mage::app()->getStore()->getCode();
         /* @var $update Mage_Core_Model_Layout_Update */
         $update = $observer->getEvent()->getLayout()->getUpdate();
-        $update->addHandle('WEBSITE_' . $websiteCode .  '_' . $fullActionName);
-        $update->addHandle('STORE_' . $storeCode .  '_' . $fullActionName);
+        $update->addHandle('WEBSITE_' . $websiteCode . '_' . $fullActionName);
+        $update->addHandle('STORE_' . $storeCode . '_' . $fullActionName);
     }
 }

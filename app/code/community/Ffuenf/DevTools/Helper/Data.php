@@ -165,9 +165,9 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     public function getMagerunPath()
     {
         $baseDir = Mage::getBaseDir();
-        $path = $baseDir.DS.$this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, '_sMagerunPath');
+        $path = $baseDir . DS . $this->getStoreConfig(self::CONFIG_EXTENSION_MAGERUNPATH, '_sMagerunPath');
         if (!is_file($path)) {
-            Mage::throwException('Could not find magerun at '.$path);
+            Mage::throwException('Could not find magerun at ' . $path);
         }
 
         return $path;
@@ -180,11 +180,11 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
      */
     public function runMagerun($options = array())
     {
-        array_unshift($options, '--root-dir='.Mage::getBaseDir());
+        array_unshift($options, '--root-dir=' . Mage::getBaseDir());
         array_unshift($options, '--no-interaction');
         array_unshift($options, '--no-ansi');
         $output = array();
-        exec('php -d '.$this->getMagerunPath().' '.implode(' ', $options), $output);
+        exec('php -d ' . $this->getMagerunPath() . ' ' . implode(' ', $options), $output);
 
         return $output;
     }
@@ -382,7 +382,7 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
             'development',
         );
         foreach ($environments as $env) {
-            if ($domain === Mage::getStoreConfig('ffuenf_devtools/headerbar/'.$env.'_path')) {
+            if ($domain === Mage::getStoreConfig('ffuenf_devtools/headerbar/' . $env . '_path')) {
                 $this->_className = $env;
                 break;
             }

@@ -101,7 +101,10 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         $designPackage = Mage::getSingleton('core/design_package');
         $fallbacks = $fallbackModel->getFallbackScheme($designPackage->getArea(), $designPackage->getPackageName(), $designPackage->getTheme('layout'));
         foreach ($fallbacks as $fallback) {
-            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) continue; // first one is empty for some reason
+            if (!isset($fallback['_package']) || !isset($fallback['_theme'])) {
+                continue;
+            }
+            // first one is empty for some reason
             $fallbackFile = $designPackage->getLocaleFileName('translate.csv', array('_package' => $fallback['_package']));
             $this->_addData($this->_getFileData($fallbackFile), false, $forceReload);
         }
@@ -125,12 +128,12 @@ class Ffuenf_DevTools_Model_Translate extends Mage_Core_Model_Translate
         if (is_null($localeCode) || preg_match('/[^a-zA-Z_]/', $localeCode)) {
             $localeCode = $this->getLocale();
         }
-        $filePath = $this->getLocaleOverrideFile($localeCode, 'template'.DS.$type.DS.$file);
+        $filePath = $this->getLocaleOverrideFile($localeCode, 'template' . DS . $type . DS . $file);
         if (empty($filePath) || !file_exists($filePath)) {
             return parent::getTemplateFile($file, $type, $localeCode);
         }
         $ioAdapter = new Varien_Io_File();
         $ioAdapter->open(array('path' => Mage::getBaseDir('locale')));
-        return (string) $ioAdapter->read($filePath);
+        return (string)$ioAdapter->read($filePath);
     }
 }

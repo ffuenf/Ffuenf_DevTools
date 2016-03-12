@@ -53,7 +53,7 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
     */
     public function getPatches()
     {
-        return implode(', ',$this->appliedPatches);
+        return implode(', ', $this->appliedPatches);
     }
 
     /**
@@ -70,7 +70,7 @@ class Ffuenf_DevTools_Model_Patches extends Mage_Core_Model_Abstract
         $ioAdapter->open(array('path' => $ioAdapter->dirname($this->patchFile)));
         $ioAdapter->streamOpen($this->patchFile, 'r');
         while ($buffer = $ioAdapter->streamRead()) {
-            if (stristr($buffer,'|')) {
+            if (stristr($buffer, '|')) {
                 list($date, $patch) = array_map('trim', explode('|', $buffer));
                 $this->appliedPatches[] = $patch;
             }

@@ -23,7 +23,7 @@ class Ffuenf_DevTools_Model_Layout extends Mage_Core_Model_Layout
     *
     * @param Mage_Core_Layout_Element|null $parent
     */
-    public function generateBlocks($parent=null)
+    public function generateBlocks($parent = null)
     {
         if (empty($parent)) {
             $parent = $this->getNode();

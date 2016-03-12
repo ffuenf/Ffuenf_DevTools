@@ -26,6 +26,6 @@ class Ffuenf_DevTools_Block_Adminhtml_Headerbar extends Mage_Adminhtml_Block_Tem
         /** @var Ffuenf_DevTools_Helper_Data $helper */
         $helper = $this->helper('ffuenf_devtools');
 
-        return '<div id="headerbar" class="'.$helper->getClassName().'"><div class="gitinfo"><span class="branch" title="branch">'.$helper->getBranch().'</span> / <span class="commit" title="commit">'.$helper->getCommit().'</span> / <span class="tag" title="tag">'.$helper->getTag().'</span></div></div>';
+        return '<div id="headerbar" class="' . $helper->getClassName() . '"><div class="gitinfo"><span class="branch" title="branch">' . $helper->getBranch() . '</span> / <span class="commit" title="commit">' . $helper->getCommit() . '</span> / <span class="tag" title="tag">' . $helper->getTag() . '</span></div></div>';
     }
 }
