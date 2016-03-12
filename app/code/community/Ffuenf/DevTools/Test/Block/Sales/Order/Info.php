@@ -51,6 +51,7 @@ class Ffuenf_DevTools_Test_Block_Sales_Order_Info extends EcomDev_PHPUnit_Test_C
 
     public function testCreateBlock()
     {
+        $this->getBlock();
         $this->assertBlockAlias(
             'ffuenf_devtools/sales_order_info',
             'Ffuenf_DevTools_Block_Sales_Order_Info'

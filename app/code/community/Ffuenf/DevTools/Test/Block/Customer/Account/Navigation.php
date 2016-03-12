@@ -37,6 +37,7 @@ class Ffuenf_DevTools_Test_Block_Customer_Account_Navigation extends EcomDev_PHP
 
     public function testCreateBlock()
     {
+	$this->getBlock();
 	$this->assertBlockAlias(
 	    'ffuenf_devtools/customer_account_navigation',
 	    'Ffuenf_DevTools_Block_Customer_Account_Navigation'

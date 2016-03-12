@@ -1,2 +1,2 @@
 config:
-  default/ffuenf_devtools/magerun/path: "/home/travis/.cache/bin/n98-magerun"
+  default/ffuenf_devtools/magerun/path: "../../../home/travis/.cache/bin/n98-magerun"
