@@ -75,7 +75,7 @@ class Resave_Products extends Mage_Shell_Abstract
     {
         $product = Mage::getModel('catalog/product')->load($item->getId());
         $product->setIsChanged(true);
-        echo $product->getId()."\r\n";
+        echo $product->getId() . "\r\n";
         $product->save();
     }
 

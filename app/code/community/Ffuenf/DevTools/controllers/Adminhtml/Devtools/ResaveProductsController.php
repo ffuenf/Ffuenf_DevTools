@@ -46,7 +46,7 @@ class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools
         if ($batch->getId()) {
             try {
                 $hasGenerated = $batch->generate();
-                $cnt  = $batch->getInfoCnt();
+                $cnt = $batch->getInfoCnt();
                 $total = $batch->getInfoTotal();
                 if ($hasGenerated) {
                     $message = $this->__('The batch has been processed');
