@@ -24,6 +24,18 @@ class Ffuenf_DevTools_Test_Block_Customer_Account_Navigation extends EcomDev_PHP
     protected function setUp()
     {
         parent::setUp();
+        $mockSession = $this->getModelMockBuilder('customer/session')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $this->replaceByMock('singleton', 'customer/session', $mockSession);
+        /* @var $mockSession PHPUnit_Framework_MockObject_MockObject Stub */
+        $mockSession = Mage::getSingleton('customer/session');
+        $mockSession->expects($this->atLeastOnce())
+            ->method('authenticate')
+            ->willReturn(true);
+        $mockSession->expects($this->atLeastOnce())
+            ->method('getCustomer')
+            ->willReturn(Mage::getModel('customer/customer')->setData('email', 'test@test.com'));
     }
 
     /**

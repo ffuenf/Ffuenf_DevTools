@@ -22,6 +22,19 @@ class Ffuenf_DevTools_Test_Block_Sales_Order_Info extends EcomDev_PHPUnit_Test_C
     public function setUp()
     {
         parent::setUp();
+        $mockSession = $this->getModelMockBuilder('customer/session')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $this->replaceByMock('singleton', 'customer/session', $mockSession);
+        /* @var $mockSession PHPUnit_Framework_MockObject_MockObject Stub */
+        $mockSession = Mage::getSingleton('customer/session');
+        $mockSession->expects($this->atLeastOnce())
+            ->method('authenticate')
+            ->willReturn(true);
+        $mockSession->expects($this->atLeastOnce())
+            ->method('getCustomer')
+            ->willReturn(Mage::getModel('customer/customer')->setData('email', 'test@test.com'));
+        
         $infoBlock = $this->getBlockMock('payment/info');
         $paymentHelperMock = $this->getHelperMock('payment/data', array('getInfoBlock'));
         $paymentHelperMock->expects($this->any())
