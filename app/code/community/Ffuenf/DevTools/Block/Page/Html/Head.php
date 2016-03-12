@@ -34,7 +34,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
      *
      * @param string $type @see Mage_Page_Block_Html_Head
      * @param string $name @see Mage_Page_Block_Html_Head
-     * @param string $params @see Mage_Page_Block_Html_Head
+     * @param string|null $params @see Mage_Page_Block_Html_Head
      * @param null|string $if @see Mage_Page_Block_Html_Head
      * @param null $cond @see Mage_Page_Block_Html_Head
      * @param string $referenceName name of the item to insert the element before. If name is not found, insert at the end, * has special meaning (before all / before all)
@@ -101,7 +101,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
      * @param string $name @see Mage_Page_Block_Html_Head
      * @param string $params @see Mage_Page_Block_Html_Head
      * @param $referenceName @see addItem
-     * @param boolean $before @see addItem
+     * @param boolean|null $before @see addItem
      * @return Ffuenf_DevTools_Block_Page_Html_Head
      */
     public function addCss($name, $params = "", $referenceName = "*", $before = null)
@@ -117,7 +117,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
      * @param string $name @see Mage_Page_Block_Html_Head
      * @param string $params @see Mage_Page_Block_Html_Head
      * @param $referenceName @see addItem
-     * @param boolean $before @see addItem
+     * @param boolean|null $before @see addItem
      * @return Ffuenf_DevTools_Block_Page_Html_Head
      */
     public function addCssIe($name, $params = "", $referenceName = "*", $before = null)
@@ -133,7 +133,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
      * @param string $name @see Mage_Page_Block_Html_Head
      * @param string $params @see Mage_Page_Block_Html_Head
      * @param $referenceName @see addItem
-     * @param boolean $before @see addItem
+     * @param boolean|null $before @see addItem
      * @return Ffuenf_DevTools_Block_Page_Html_Head
      */
     public function addJs($name, $params = "", $referenceName = "*", $before = null)
@@ -149,7 +149,7 @@ class Ffuenf_DevTools_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
      * @param string $name @see Mage_Page_Block_Html_Head
      * @param string $params @see Mage_Page_Block_Html_Head
      * @param $referenceName @see addItem
-     * @param boolean $before @see addItem
+     * @param boolean|null $before @see addItem
      * @return Ffuenf_DevTools_Block_Page_Html_Head
      */
     public function addJsIe($name, $params = "", $referenceName = "*", $before = null)

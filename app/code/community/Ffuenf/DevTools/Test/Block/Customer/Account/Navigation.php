@@ -37,7 +37,7 @@ class Ffuenf_DevTools_Test_Block_Customer_Account_Navigation extends EcomDev_PHP
 
     public function testCreateBlock()
     {
-        $block = $this->getBlock();
+        $block = Mage::app()->getLayout()->createBlock('customer/account_navigation');
         $this->assertInstanceOf('Ffuenf_DevTools_Block_Customer_Account_Navigation', $block);
     }
 
