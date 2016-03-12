@@ -53,8 +53,10 @@ class Ffuenf_DevTools_Test_Block_Page_Html_Head extends EcomDev_PHPUnit_Test_Cas
 
     public function testCreateBlock()
     {
-        $block = $this->getBlock();
-        $this->assertInstanceOf('Ffuenf_DevTools_Block_Page_Html_Head', $block);
+        $this->assertBlockAlias(
+            'ffuenf_devtools/page_html_head',
+            'Ffuenf_DevTools_Block_Page_Html_Head'
+        );
     }
 
     /**

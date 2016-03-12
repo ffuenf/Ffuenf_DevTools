@@ -239,8 +239,8 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
             if (!empty($fallbackModel)) {
                 $fallbackSchemes = $fallbackModel->getFallbackScheme('frontend', $design['package'], $design['theme']);
                 if (!empty($fallbackSchemes)) {
-                    foreach($fallbackSchemes as $scheme) {
-                        if(!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
+                    foreach ($fallbackSchemes as $scheme) {
+                        if (!isset($scheme['_package']) || !isset($scheme['_theme'])) continue;
                         $paths[] = Mage::getBaseDir('design').DS.'frontend'.DS.$scheme['_package'].DS.$scheme['_theme'].DS.'locale';
                     }
                 }
