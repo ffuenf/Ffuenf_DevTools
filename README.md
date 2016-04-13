@@ -27,6 +27,9 @@ This extension inherits the functionality of the following extensions:
 * [MageMechanic_PhpSeven](https://github.com/MageMechanic/PhpSeven)
 * [Philwinkle_AppliedPatches](https://github.com/philwinkle/Philwinkle_AppliedPatches)
 * [Yireo_EmailOverride](https://github.com/yireo/Yireo_EmailOverride)
+* [Dh_EmptyHandles](https://github.com/drewhunter/EmptyHandles)
+* [Mexbs_Urlrewrite](http://www.mexbs.com/product/mass-delete-url-rewrites-free-magento-extension/)
+* [Inchoo_Xternal](http://inchoo.net/magento/how-to-add-external-javascript-css-file-to-magento/)
 
 Platform
 --------
