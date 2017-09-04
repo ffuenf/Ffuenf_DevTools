@@ -2,6 +2,15 @@
 
 This file is used to list changes made in each version of Ffuenf_DevTools.
 
+## 2.2.0 (September 4, 2017)
+
+* add layout handles for empty category empty search and empty cart pages
+* add notes about inherited extensions
+* add soaptest
+* add log configuration
+* remove magento composer repo
+* several minor fixes
+
 ## 2.1.9 (March 12, 2016)
 
 * update travis / MageTestStand
