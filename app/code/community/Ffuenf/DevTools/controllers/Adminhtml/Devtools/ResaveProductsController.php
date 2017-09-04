@@ -16,7 +16,7 @@
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools_Controller_Abstract
+class Ffuenf_DevTools_Adminhtml_DevTools_BatchController extends Ffuenf_DevTools_Controller_Abstract
 {
 
     protected function _initAction()

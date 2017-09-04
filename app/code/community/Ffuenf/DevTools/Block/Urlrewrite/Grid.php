@@ -27,9 +27,9 @@ class Ffuenf_DevTools_Block_Urlrewrite_Grid extends Mage_Adminhtml_Block_Urlrewr
         $this->getMassactionBlock()->addItem(
             'delete',
             array(
-                'label'=> Mage::helper('review')->__('Delete'),
+                'label'=> Mage::helper('ffuenf_devtools')->__('Delete'),
                 'url'  => $this->getUrl(
-                '*/*/massDelete',
+                '*/devtools_urlrewrite/massDelete',
                 array('ret' => Mage::registry('usePendingFilter') ? 'pending' : 'index')
             ),
             'confirm' => Mage::helper('ffuenf_devtools')->__('Are you sure?')

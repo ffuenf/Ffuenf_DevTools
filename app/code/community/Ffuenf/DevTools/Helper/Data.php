@@ -19,6 +19,9 @@
 class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
 {
     const CONFIG_EXTENSION_ACTIVE = 'ffuenf_devtools/general/enable';
+    const CONFIG_EXTENSION_LOG_SYSTEM_ACTIVE = 'ffuenf_devtools/log/enable';
+    const CONFIG_EXTENSION_LOG_PROFILE_ACTIVE = 'ffuenf_devtools/log/profile_enable';
+    const CONFIG_EXTENSION_LOG_EXCEPTION_ACTIVE = 'ffuenf_devtools/log/exception_enable';
     const CONFIG_EXTENSION_MAGERUNPATH = 'ffuenf_devtools/magerun/path';
     const CONFIG_EXTENSION_BACKUP_DUMPDATABASESCRIPTPATH = 'ffuenf_devtools/backup/dump_database_script_path';
     const CONFIG_EXTENSION_RESAVEPRODUCTS_TIMEFRAMEFROM = 'ffuenf_devtools/resaveproducts/timeframefrom';
@@ -117,6 +120,36 @@ class Ffuenf_DevTools_Helper_Data extends Ffuenf_Common_Helper_Core
     public function isExtensionActive()
     {
         return $this->getStoreFlag(self::CONFIG_EXTENSION_ACTIVE, '_bExtensionActive');
+    }
+
+    /**
+     * Check to see if logging is active.
+     *
+     * @return bool
+     */
+    public function isLogActive()
+    {
+        return Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_LOG_SYSTEM_ACTIVE);
+    }
+
+    /**
+     * Check to see if profile logging is active.
+     *
+     * @return bool
+     */
+    public function isLogProfileActive()
+    {
+        return Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_LOG_PROFILE_ACTIVE);
+    }
+
+    /**
+     * Check to see if exception logging is active.
+     *
+     * @return bool
+     */
+    public function isLogExceptionActive()
+    {
+        return Mage::getStoreConfigFlag(self::CONFIG_EXTENSION_LOG_EXCEPTION_ACTIVE);
     }
 
     /**

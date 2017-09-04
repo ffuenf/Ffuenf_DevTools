@@ -15,9 +15,8 @@
  * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
-
-require_once('Mage/Adminhtml/controllers/UrlrewriteController.php');
-class Ffuenf_Devtools_Adminhtml_Devtools_UrlrewriteController extends Mage_Adminhtml_UrlrewriteController
+require_once(Mage::getModuleDir('controllers','Mage_Adminhtml').DS.'UrlrewriteController.php');
+class Ffuenf_DevTools_Adminhtml_DevTools_UrlrewriteController extends Mage_Adminhtml_UrlrewriteController
 {
     /**
      * mass delete action, deletes the selected url rewrites
@@ -41,7 +40,7 @@ class Ffuenf_Devtools_Adminhtml_Devtools_UrlrewriteController extends Mage_Admin
                 $session->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/' . $this->getRequest()->getParam('ret', 'index'));
+        $this->_redirectReferer();
     }
 
     /**

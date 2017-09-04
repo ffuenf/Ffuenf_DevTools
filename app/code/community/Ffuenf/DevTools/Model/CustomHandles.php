@@ -237,6 +237,11 @@ class Ffuenf_DevTools_Model_CustomHandles
      */
     protected function _addEmptySearchHandle($observer)
     {
+        $action = $observer->getEvent()->getAction(); /* @var $action Mage_Core_Controller_Varien_Action */
+        $fullActionName = $action->getFullActionName();
+        if ($fullActionName != 'catalogsearch_result_index') {
+            return;
+        }
         $numResults = (bool)Mage::helper('catalogsearch')->getQuery()->getNumResults();
         if (!$numResults) {
             /* @var $update Mage_Core_Model_Layout_Update */
@@ -250,6 +255,11 @@ class Ffuenf_DevTools_Model_CustomHandles
      */
     protected function _addEmptyCartHandle($observer)
     {
+        $action = $observer->getEvent()->getAction(); /* @var $action Mage_Core_Controller_Varien_Action */
+        $fullActionName = $action->getFullActionName();
+        if ($fullActionName != 'checkout_cart_index') {
+            return;
+        }
         $numCartItems = (bool)Mage::helper('checkout/cart')->getItemsCount();
         if (!$numCartItems) {
             /* @var $update Mage_Core_Model_Layout_Update */

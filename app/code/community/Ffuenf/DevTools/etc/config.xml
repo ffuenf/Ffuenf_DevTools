@@ -30,22 +30,22 @@
             </ffuenf_devtools>
             <adminhtml>
                 <rewrite>
-                    <urlrewrite_grid>Ffuenf_Devtools_Block_Urlrewrite_Grid</urlrewrite_grid>
+                    <urlrewrite_grid>Ffuenf_DevTools_Block_Urlrewrite_Grid</urlrewrite_grid>
                 </rewrite>
             </adminhtml>
             <page>
                 <rewrite>
-                    <html_head>Ffuenf_Devtools_Block_Page_Html_Head</html_head>
+                    <html_head>Ffuenf_DevTools_Block_Page_Html_Head</html_head>
                 </rewrite>
             </page>
             <customer>
                 <rewrite>
-                    <account_navigation>Ffuenf_Devtools_Block_Customer_Account_Navigation</account_navigation>
+                    <account_navigation>Ffuenf_DevTools_Block_Customer_Account_Navigation</account_navigation>
                 </rewrite>
             </customer>
             <sales>
                 <rewrite>
-                    <order_info>Ffuenf_Devtools_Block_Sales_Order_Info</order_info>
+                    <order_info>Ffuenf_DevTools_Block_Sales_Order_Info</order_info>
                 </rewrite>
             </sales>
         </blocks>
@@ -151,7 +151,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <devtools after="Mage_Adminhtml">Ffuenf_DevTools_Adminhtml</devtools>
+                        <Ffuenf_DevTools after="Mage_Adminhtml">Ffuenf_DevTools_Adminhtml</Ffuenf_DevTools>
                     </modules>
                 </args>
             </adminhtml>
@@ -232,6 +232,11 @@
                 <catalog_navigation_home_active>0</catalog_navigation_home_active>
                 <catalog_navigation_home_label>Home</catalog_navigation_home_label>
             </linkmanager>
+            <log>
+                <enable>1</enable>
+                <profile_enable>1</profile_enable>
+                <exception_enable>1</exception_enable>
+            </log>
         </ffuenf_devtools>
     </default>
     <uninstall>
