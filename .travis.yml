@@ -19,16 +19,17 @@ matrix:
 env:
   global:
   - APPNAME=Ffuenf_DevTools
+  - secure: dAgXCIVg/HiAWkBYu01UiioY0zK9wwJ201kDB6Qp+eloqOQFIkk9sgeMBjiGkG+VAak1NtNugdrs6vc76vvafDyJtAp+pOWO5sydYv6JohFIhmSxHAo5IDgh2QHt4R3mEI2bBmg2Eqd6w7biDmO2gbM6Sr/CIt0hNGpFg13nMkU=
+  - secure: f8UZPrQCwSdvgBqeZrgusMhbiBDG6KAvBNp3wZNBjOxqaoG8QlCf/W6UKsDFx4H/fx5ycJzuGbRG0KPse0N3ATvH8G0uDKT+c5gbGwSMaxr3zDCoABqCE+H0hPWxwBPI5v16H/IR/AIlrD7axEY8iYj6ay4eOvzoQxVFKCNXubw=
+  - secure: YAMQ8GjpGg6PF4merSuYsxNTE1PL6NI0rnyarPZNOii5IRI/aygAnzaFg31sOP6nLyrn0zrBoBWJ5dKWr62gdpisbD18NEuUo9cTnkIRAPUVEK1DQRAJwuo6AMzV59oIKNi1Vm9wXWyWKmwjwhSWi4rwcvy6s0YxdSmoVML5cn0=
   matrix:
-  - MAGENTO_VERSION=ce-1.9.3.7
-  - MAGENTO_VERSION=ce-1.9.2.4
-  - MAGENTO_VERSION=ce-1.9.1.1
+  - MAGENTO_VERSION=ce-1.9.3.10
 before_install:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/before_install.sh
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/dev/before_install.sh
   | bash
 script:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/script.sh |
-  bash
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/dev/script.sh
+  | bash
 deploy:
   provider: releases
   file:
@@ -38,3 +39,8 @@ deploy:
   on:
     branch: master
     tags: true
+  api_key:
+    secure: PXDxNVHbIsW8mQDrgBW6qf/7pW9zUFq1CORAFoIVMpkscCwylq3kswsbgdwKFK/rfPjEFR0Ve930PoFFOu9DafOmvI8IYvRPEaxfHf0aV88GCaEoGSwU8iYJISgsDtGIv3Fg6HfG9SRnyBsTUJIRi8U0ihvSD/AC0A2MiEPHMZw=
+notifications:
+  slack:
+    secure: KMGoayXCDCxh7Vkt7py8Vf92W+0lGwQGBTlHibWyf8ylDw16FJ5deySROvUiWIHLtdhPgxPOHGZJnk8qmXeipFKCdGUFZBQqfVFi3BDLmAEMp2+LpzHQTchXNdnmQZXHvbT4rPCdChoydY9kGh2aia8mM1xSk8jwcfHUo/hfVYc=
