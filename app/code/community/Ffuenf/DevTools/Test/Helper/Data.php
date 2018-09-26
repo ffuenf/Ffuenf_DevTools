@@ -25,6 +25,21 @@
 class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
 {
     /**
+     * @var Ffuenf_DevTools_Helper_Data
+     */
+    protected $_helper;
+
+    public function setUp()
+    {
+        $this->_helper = new Ffuenf_DevTools_Helper_Data();
+    }
+
+    public function tearDown()
+    {
+        $this->_helper = null;
+    }
+
+    /**
      * Tests whether extension is active.
      *
      * @test
@@ -33,7 +48,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testIsExtensionActive()
     {
         $this->assertTrue(
-            Mage::helper('ffuenf_devtools')->isExtensionActive(),
+            $this->_helper->isExtensionActive(),
             'Extension is not active please check config'
         );
     }
@@ -90,7 +105,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testIsMagerunAvailable()
     {
         $this->assertTrue(
-            Mage::helper('ffuenf_devtools')->isMagerunAvailable(),
+            $this->_helper->isMagerunAvailable(),
             'No valid magerun found'
         );
     }
@@ -105,7 +120,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testGetDatabaseDumpScriptPath()
     {
         $this->assertEquals(
-            Mage::helper('ffuenf_devtools')->getDatabaseDumpScriptPath(),
+            $this->_helper->getDatabaseDumpScriptPath(),
             '../../shared/dump_database.sh',
             'database_dump script path is not set please check config'
         );

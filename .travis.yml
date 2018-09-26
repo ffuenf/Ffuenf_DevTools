@@ -14,7 +14,6 @@ php:
 matrix:
   fast_finish: true
   allow_failures:
-  - php: 7.1
   - php: 7.2
 env:
   global:
@@ -22,6 +21,9 @@ env:
   - secure: dAgXCIVg/HiAWkBYu01UiioY0zK9wwJ201kDB6Qp+eloqOQFIkk9sgeMBjiGkG+VAak1NtNugdrs6vc76vvafDyJtAp+pOWO5sydYv6JohFIhmSxHAo5IDgh2QHt4R3mEI2bBmg2Eqd6w7biDmO2gbM6Sr/CIt0hNGpFg13nMkU=
   - secure: f8UZPrQCwSdvgBqeZrgusMhbiBDG6KAvBNp3wZNBjOxqaoG8QlCf/W6UKsDFx4H/fx5ycJzuGbRG0KPse0N3ATvH8G0uDKT+c5gbGwSMaxr3zDCoABqCE+H0hPWxwBPI5v16H/IR/AIlrD7axEY8iYj6ay4eOvzoQxVFKCNXubw=
   - secure: YAMQ8GjpGg6PF4merSuYsxNTE1PL6NI0rnyarPZNOii5IRI/aygAnzaFg31sOP6nLyrn0zrBoBWJ5dKWr62gdpisbD18NEuUo9cTnkIRAPUVEK1DQRAJwuo6AMzV59oIKNi1Vm9wXWyWKmwjwhSWi4rwcvy6s0YxdSmoVML5cn0=
+  - secure: lDv8pa1D4aTX1XRicr75+YZCKm0JjZfY3kG28e1sV3W7+pIu4oum8vvz3kan4VloHzXyEU1S6j1ukhE99zeXLJK2/KJGzlNsj7X5dQs2NA07yUuwB67jGoTmBKf81n12F8YYNMrIAfxv1Gez9/NeGOstcff6p9ZeGyAGrD0WIco=
+  - secure: afM+rkGSMBhHmmE+jR3b7aqemEAOih8NOhA6oaqb3N6oHOowmG8xYpi2RS/x94rRqxeimsFiukAKqN+5jvu9cGVwUBkbY6eAxRUigOBYltk25En4tEWxZFtSDuRQlV2oedtaWXzJ4K0gbNwdXzRqRYWJ8j+xAsJVr3/DU6lGG+o=
+  - secure: kPEr1zJzQtmiyC6KoF7DGZmqhQ3anCTNk62iZ/EBsP2Fah5bIAOqcHCg8kx47Fq0oN17hOP5XtgrHT43YKGSIqdrryJmZs9Xzoy9OvV45yC18eTAnYtd4JGFasCZfs4zHEgjwAmADJ3K/2ZIW1NvWi2BpMwD1tJeRljojgc+kMA=
   matrix:
   - MAGENTO_VERSION=ce-1.9.3.10
 before_install:
@@ -40,7 +42,7 @@ deploy:
     branch: master
     tags: true
   api_key:
-    secure: PXDxNVHbIsW8mQDrgBW6qf/7pW9zUFq1CORAFoIVMpkscCwylq3kswsbgdwKFK/rfPjEFR0Ve930PoFFOu9DafOmvI8IYvRPEaxfHf0aV88GCaEoGSwU8iYJISgsDtGIv3Fg6HfG9SRnyBsTUJIRi8U0ihvSD/AC0A2MiEPHMZw=
+    secure: da11cJMM649R1BQhuZ4/MgyBB//N0sy0CMK7KrsSIhWYbAlTOYb6JxIwwqDXP0RgcJesGgYrXq2jRQ8s4m0H6MwLg6EJsWQwvlviGpxtBUXSOjmWsB8r+zzYbE4a4zeZKqqPxJqlw4nwq0FdUZnLMlqQn7jz3XhlmiFs/aeBjjQ=
 notifications:
   slack:
-    secure: KMGoayXCDCxh7Vkt7py8Vf92W+0lGwQGBTlHibWyf8ylDw16FJ5deySROvUiWIHLtdhPgxPOHGZJnk8qmXeipFKCdGUFZBQqfVFi3BDLmAEMp2+LpzHQTchXNdnmQZXHvbT4rPCdChoydY9kGh2aia8mM1xSk8jwcfHUo/hfVYc=
+    secure: OB9Fjpj2yVPDTwb+XHBGMvPMaGHwJjyIjE7bAeu8tsuU8LIuPqoCTiFPF7yXpbuLtFCfI4ZA8qO6DeA0of9UyBFhjm8DWigDdNg8a9JpggRKzF0jmydNVGazl1hcHP808saOtsE5WFo1Yl+3G+VXTH9jSg/vkP4sFKmB5BoGC7c=
