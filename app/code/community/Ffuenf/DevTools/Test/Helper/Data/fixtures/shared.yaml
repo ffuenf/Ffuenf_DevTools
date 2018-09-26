@@ -1,2 +1,5 @@
 config:
   default/ffuenf_devtools/general/enable: 1
+  default/ffuenf_devtools/log/enable: 1
+  default/ffuenf_devtools/log/profile_enable: 1
+  default/ffuenf_devtools/log/exception_enable: 1

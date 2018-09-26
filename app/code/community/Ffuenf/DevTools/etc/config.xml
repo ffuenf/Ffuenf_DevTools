@@ -233,9 +233,9 @@
                 <catalog_navigation_home_label>Home</catalog_navigation_home_label>
             </linkmanager>
             <log>
-                <enable>1</enable>
-                <profile_enable>1</profile_enable>
-                <exception_enable>1</exception_enable>
+                <enable>0</enable>
+                <profile_enable>0</profile_enable>
+                <exception_enable>0</exception_enable>
             </log>
         </ffuenf_devtools>
     </default>
