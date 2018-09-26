@@ -12,7 +12,7 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2018 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -25,6 +25,21 @@
 class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
 {
     /**
+     * @var Ffuenf_DevTools_Helper_Data
+     */
+    protected $_helper;
+
+    public function setUp()
+    {
+        $this->_helper = new Ffuenf_DevTools_Helper_Data();
+    }
+
+    public function tearDown()
+    {
+        $this->_helper = null;
+    }
+
+    /**
      * Tests whether extension is active.
      *
      * @test
@@ -33,8 +48,50 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testIsExtensionActive()
     {
         $this->assertTrue(
-            Mage::helper('ffuenf_devtools')->isExtensionActive(),
+            $this->_helper->isExtensionActive(),
             'Extension is not active please check config'
+        );
+    }
+
+    /**
+     * Tests whether extension logging is active.
+     *
+     * @test
+     * @covers Ffuenf_DevTools_Helper_Data::isLogActive
+     */
+    public function testIsLogActive()
+    {
+        $this->assertTrue(
+            $this->_helper->isLogActive(),
+            'System logging is not active please check config'
+        );
+    }
+
+    /**
+     * Tests whether extension profile logging is active.
+     *
+     * @test
+     * @covers Ffuenf_DevTools_Helper_Data::isLogProfileActive
+     */
+    public function testIsLogProfileActive()
+    {
+        $this->assertTrue(
+            $this->_helper->isLogProfileActive(),
+            'Profile logging is not active please check config'
+        );
+    }
+
+    /**
+     * Tests whether extension exception logging is active.
+     *
+     * @test
+     * @covers Ffuenf_DevTools_Helper_Data::isLogExceptionActive
+     */
+    public function testIsLogExceptionActive()
+    {
+        $this->assertTrue(
+            $this->_helper->isLogExceptionActive(),
+            'Exception logging is not active please check config'
         );
     }
 
@@ -48,7 +105,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testIsMagerunAvailable()
     {
         $this->assertTrue(
-            Mage::helper('ffuenf_devtools')->isMagerunAvailable(),
+            $this->_helper->isMagerunAvailable(),
             'No valid magerun found'
         );
     }
@@ -63,7 +120,7 @@ class Ffuenf_DevTools_Test_Helper_Data extends EcomDev_PHPUnit_Test_Case
     public function testGetDatabaseDumpScriptPath()
     {
         $this->assertEquals(
-            Mage::helper('ffuenf_devtools')->getDatabaseDumpScriptPath(),
+            $this->_helper->getDatabaseDumpScriptPath(),
             '../../shared/dump_database.sh',
             'database_dump script path is not set please check config'
         );

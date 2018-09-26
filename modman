@@ -4,4 +4,5 @@ app/design/adminhtml/default/default/layout/ffuenf_devtools.xml app/design/admin
 app/design/adminhtml/default/default/template/ffuenf/devtools   app/design/adminhtml/default/default/template/ffuenf/devtools
 app/locale/en_US/Ffuenf_DevTools.csv                            app/locale/en_US/Ffuenf_DevTools.csv
 shell/resave-products.php                                       shell/resave-products.php
+shell/soaptest.php                                              shell/soaptest.php
 skin/adminhtml/default/default/headerbar.css                    skin/adminhtml/default/default/headerbar.css

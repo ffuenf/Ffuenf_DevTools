@@ -1,6 +1,8 @@
 app/code/community/Ffuenf/DevTools
 app/etc/modules/Ffuenf_DevTools.xml
-app/design/adminhtml/default/default/layout/devtools.xml
-app/design/adminhtml/default/default/template/devtools/
-skin/adminhtml/default/default/headerbar.css
+app/design/adminhtml/default/default/layout/ffuenf_devtools.xml
+app/design/adminhtml/default/default/template/ffuenf/devtools
+app/locale/en_US/Ffuenf_DevTools.csv
 shell/resave-products.php
+shell/soaptest.php
+skin/adminhtml/default/default/headerbar.css

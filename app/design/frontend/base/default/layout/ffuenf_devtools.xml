@@ -57,4 +57,19 @@
             <action method="removeLinkByUrl" ifconfig="ffuenf_devtools/linkmanager/top_links/login"><url helper="customer/getLogoutUrl"/></action>
         </reference>
     </customer_logged_in>
+    <catalog_category_view_empty>
+        <!-- 
+            Layout code here to control empty category pages
+        -->
+    </catalog_category_view_empty>
+    <catalogsearch_result_index_empty>
+        <!-- 
+            Layout code here to control empty search result pages
+        -->
+    </catalogsearch_result_index_empty>
+    <checkout_cart_index_empty>
+        <!-- 
+            Layout code here to control empty cart pages
+        -->
+    </checkout_cart_index_empty>
 </layout>

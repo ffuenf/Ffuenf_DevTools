@@ -12,7 +12,7 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2018 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -51,6 +51,9 @@ class Ffuenf_DevTools_Model_CustomHandles
         $this->_addCustomerBirthdayHandle($updateManager);
         $this->_addCustomerIsSubscribedHandle($updateManager);
         $this->_addSeasonHandle($updateManager);
+        $this->_addEmptyCategoryHandle($observer);
+        $this->_addEmptyCartHandle($observer);
+        $this->_addEmptySearchHandle($observer);
         
         $action = $observer->getEvent()->getAction(); /* @var $action Mage_Core_Controller_Varien_Action */
         switch ($action->getFullActionName()) {
@@ -147,8 +150,6 @@ class Ffuenf_DevTools_Model_CustomHandles
         $updateManager->addHandle("season_{$season}");
     }
 
-
-
     /**
      * @param Varien_Event_Observer $observer
      */
@@ -212,5 +213,58 @@ class Ffuenf_DevTools_Model_CustomHandles
         $update = $observer->getEvent()->getLayout()->getUpdate();
         $update->addHandle('WEBSITE_' . $websiteCode . '_' . $fullActionName);
         $update->addHandle('STORE_' . $storeCode . '_' . $fullActionName);
+    }
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    protected function _addEmptyCategoryHandle($observer)
+    {
+        $category = Mage::registry('current_category');
+        if (!($category instanceof Mage_Catalog_Model_Category)) {
+            return;
+        }
+        $numProducts = (bool)Mage::helper('catalog')->getCategory()->getProductCollection()->count();
+        if (!$numProducts) {
+            /* @var $update Mage_Core_Model_Layout_Update */
+            $update = $observer->getEvent()->getLayout()->getUpdate();
+            $update->addHandle('catalog_category_view_empty');
+        }
+    }
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    protected function _addEmptySearchHandle($observer)
+    {
+        $action = $observer->getEvent()->getAction(); /* @var $action Mage_Core_Controller_Varien_Action */
+        $fullActionName = $action->getFullActionName();
+        if ($fullActionName != 'catalogsearch_result_index') {
+            return;
+        }
+        $numResults = (bool)Mage::helper('catalogsearch')->getQuery()->getNumResults();
+        if (!$numResults) {
+            /* @var $update Mage_Core_Model_Layout_Update */
+            $update = $observer->getEvent()->getLayout()->getUpdate();
+            $update->addHandle('catalogsearch_result_index_empty');
+        }
+    }
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    protected function _addEmptyCartHandle($observer)
+    {
+        $action = $observer->getEvent()->getAction(); /* @var $action Mage_Core_Controller_Varien_Action */
+        $fullActionName = $action->getFullActionName();
+        if ($fullActionName != 'checkout_cart_index') {
+            return;
+        }
+        $numCartItems = (bool)Mage::helper('checkout/cart')->getItemsCount();
+        if (!$numCartItems) {
+            /* @var $update Mage_Core_Model_Layout_Update */
+            $update = $observer->getEvent()->getLayout()->getUpdate();
+            $update->addHandle('checkout_cart_index_empty');
+        }
     }
 }

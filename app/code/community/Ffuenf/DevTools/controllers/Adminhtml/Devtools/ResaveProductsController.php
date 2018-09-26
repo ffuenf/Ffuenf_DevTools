@@ -12,11 +12,11 @@
  * @category   Ffuenf
  *
  * @author     Achim Rosenhagen <a.rosenhagen@ffuenf.de>
- * @copyright  Copyright (c) 2016 ffuenf (http://www.ffuenf.de)
+ * @copyright  Copyright (c) 2018 ffuenf (http://www.ffuenf.de)
  * @license    http://opensource.org/licenses/mit-license.php MIT License
  */
 
-class Ffuenf_DevTools_Adminhtml_Devtools_BatchController extends Ffuenf_DevTools_Controller_Abstract
+class Ffuenf_DevTools_Adminhtml_DevTools_BatchController extends Ffuenf_DevTools_Controller_Abstract
 {
 
     protected function _initAction()
