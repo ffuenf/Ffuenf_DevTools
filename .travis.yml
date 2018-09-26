@@ -25,10 +25,10 @@ env:
   matrix:
   - MAGENTO_VERSION=ce-1.9.3.10
 before_install:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/dev/before_install.sh
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/before_install.sh
   | bash
 script:
-- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/dev/script.sh
+- curl -sSL https://raw.githubusercontent.com/ffuenf/MageTestStand/master/script.sh
   | bash
 deploy:
   provider: releases
